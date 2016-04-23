@@ -1,0 +1,5 @@
+(n @ [d : 7])
+   where 
+     dimension d : unordered finite nonperiodic {8, 0, 4};
+     n=42;
+   end

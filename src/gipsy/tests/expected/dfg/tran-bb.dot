@@ -1,0 +1,23 @@
+digraph G {
+rankdir = LR;
+edge [arrowsize=0.7];
+edge [arrowtail="none"];
+
+aa2 [shape=house,orientation=270,label=""];
+{rank="max";aa2;}
+
+
+subgraph cluster0{
+node [shape=box];
+label = "FUNCTION_bb";
+color = hot_pink;
+fontcolor = hot_pink;
+
+
+op3 [label="HARSH"];
+op3 ->aa2;
+aa4 [label="D", shape=ellipse];
+aa4 -> op3 [headlabel="1"];
+{rank="min";aa4;}
+
+}}

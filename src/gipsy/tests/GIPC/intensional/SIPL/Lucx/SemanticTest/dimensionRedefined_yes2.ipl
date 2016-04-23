@@ -1,0 +1,6 @@
+((#d)-1)+n
+   where
+     dimension d;
+     dimension d : unordered finite nonperiodic {red, green};
+     n=12;
+   end

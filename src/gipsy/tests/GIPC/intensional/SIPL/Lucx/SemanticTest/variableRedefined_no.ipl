@@ -1,0 +1,10 @@
+X
+  where
+     X=12;
+     Y+X
+       where
+          X=11;
+          Y=12;          
+       end;
+  end
+       

@@ -1,0 +1,54 @@
+lib README
+==========
+
+This README outlines the contents of the /lib dir
+and the purpose of each file in it.
+
+$Header: /cvsroot/gipsy/gipsy/lib/README,v 1.4 2012/05/30 23:07:48 mokhov Exp $
+
+Files:
+------
+
+jini-core.jar
+jini-ext.jar
+
+   - Provide Jini ways of communication. Used
+     in DemandDispatcher for now and JavaSpaces.
+   - Added by Emil (i_vassev@cs.concordia.ca)
+   - Source: XXX
+
+marf.jar
+
+   - Provides pattern recognition pipeline for signal
+     and NLP processing with highly reconfigurable
+     algorithm support. 
+   - Provides some utility classes, such as BaseThread
+     OptionProcessor, exceptions, and others.
+   - Added by Serguei (mokhov@cs.concordia.ca)
+   - Source: marf.sf.net
+
+marfcat.jar
+   - A MARF-based Code Analysis Tool bundled into a 
+     jar for scalability testing and distributed evaluation
+     of code analysis by the GEE's distributed middleware.
+     Problem specific (PS) DGT and DWT draw from this
+     to parallelize the execution of the original standalone
+     application.
+
+netcdfAll.jar
+
+   - Provides NetCDF's interface to our Warehouse.
+   - Added by Lei (lei_tao@cs.concordia.ca)
+   - Source: XXX
+
+outrigger-dl.jar
+
+reggie-dl.jar
+
+start.jar
+
+sun-util.jar
+
+tools.jar
+
+EOF

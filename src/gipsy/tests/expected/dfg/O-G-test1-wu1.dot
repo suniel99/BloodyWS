@@ -1,0 +1,52 @@
+digraph G {
+	graph [rankdir=LR];
+	node [label="\N"];
+	edge [arrowsize="0.7", arrowtail=none];
+	graph [bb="0,0,370,124"];
+	{
+		graph [rank=max];
+		graph [bb=""];
+		aa3 [label="", shape=house, orientation=270, pos="335,44", width="0.75", height="0.50"];
+	}
+	subgraph cluster0 {
+		graph [label=START];
+		graph [color=hot_pink];
+		graph [fontcolor=hot_pink];
+		graph [lp="42,114"];
+		graph [bb="8,8,278,104"];
+		node [shape=box];
+		subgraph cluster1 {
+			graph [label=X];
+			graph [lp="49,106"];
+			graph [bb="36,44,186,96"];
+			{
+				graph [rank=max];
+				graph [lp=""];
+				graph [bb=""];
+				aa2 [label="", shape=point, pos="176,58", width="0.06", height="0.06"];
+			}
+			{
+				graph [rank=min];
+				graph [lp=""];
+				graph [bb=""];
+				aa6 [label=3, pos="91,70", width="0.75", height="0.50"];
+			}
+			aa6 -> aa2 [pos="e,174,58 118,66 136,63 159,61 170,59"];
+		}
+		subgraph cluster2 {
+			graph [label=Y];
+			graph [lp="159,46"];
+			graph [bb="146,16,186,36"];
+			{
+				graph [rank=max];
+				graph [lp=""];
+				graph [bb=""];
+				aa5 [label="", shape=point, pos="176,26", width="0.06", height="0.06"];
+			}
+		}
+		op4 [label=ADD, pos="243,44", width="0.75", height="0.50"];
+		aa2 -> op4 [headlabel=1, pos="e,216,50 178,58 183,56 196,54 209,51", head_lp="208,55"];
+		aa5 -> op4 [headlabel=2, pos="e,216,37 178,27 183,28 196,31 209,35", head_lp="206,39"];
+	}
+	op4 -> aa3 [pos="e,313,44 270,44 282,44 295,44 306,44"];
+}

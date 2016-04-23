@@ -1,0 +1,10 @@
+o
+where
+  observation o = P;
+  observation o1 = (P, 1, 0, 1.0);
+  o fby.P (o1 == o, 1, 0, 1.0);
+  where
+  	// P observed
+  	P = 123;
+  end;
+end;

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from WSDSTWrapperService WSDL service -->
+
+  <service name="WSDSTWrapper" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://test"/>
+      <parameter name="wsdlServiceElement" value="WSDSTWrapperService"/>
+      <parameter name="schemaQualified" value="http://test"/>
+      <parameter name="wsdlServicePort" value="WSDSTWrapper"/>
+      <parameter name="className" value="test.WSDSTWrapper"/>
+      <parameter name="wsdlPortType" value="WSDSTWrapper"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://test" xmlns:retNS="http://test" xmlns:rtns="http://test" name="getHashTableValue" qname="operNS:getHashTableValue" returnQName="retNS:getHashTableValueReturn" returnType="rtns:WSDemand" soapAction="">
+        <parameter xmlns:pns="http://test" xmlns:tns="http://test" qname="pns:podSignature" type="tns:WSDemandSignature"/>
+      </operation>
+      <operation xmlns:operNS="http://test" xmlns:retNS="http://test" xmlns:rtns="http://test" name="setHashTable" qname="operNS:setHashTable" returnQName="retNS:setHashTableReturn" returnType="rtns:WSDemandSignature" soapAction="">
+        <parameter xmlns:pns="http://test" xmlns:tns="http://test" qname="pns:poIdObj" type="tns:WSDemand"/>
+      </operation>
+      <operation xmlns:operNS="http://test" xmlns:retNS="http://test" xmlns:rtns="http://test" name="getPendingDemand" qname="operNS:getPendingDemand" returnQName="retNS:getPendingDemandReturn" returnType="rtns:WSDemand" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="getPendingDemand getHashTableValue setHashTable"/>
+
+      <typeMapping xmlns:ns="http://test" qname="ns:WSDemandSignature" type="java:test.WSDemandSignature" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://test" qname="ns:WSDemand" type="java:test.WSDemand" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

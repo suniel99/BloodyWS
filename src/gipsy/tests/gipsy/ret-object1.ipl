@@ -1,0 +1,23 @@
+#funcdecl
+
+int g();
+
+#JAVA
+
+Integer f()
+{
+	return new Integer("1234");
+}
+
+int g()
+{
+	return f().intValue();
+}
+
+#JLUCID
+
+A @.d 1
+where
+	dimension d;
+	A = 1 + g();
+end

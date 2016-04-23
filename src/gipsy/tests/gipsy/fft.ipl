@@ -1,0 +1,98 @@
+/*
+ * FFT implementation in JLucid.
+ * Serguei Mokhov
+ * $Id: fft.ipl,v 1.3 2005/10/11 08:34:10 mokhov Exp $
+ */
+
+#funcdecl
+double sin(double);
+double pi();
+
+#JAVA
+
+double sin(double pdValue)
+{
+	return Math.sin(pdValue);
+}
+
+double pi()
+{
+	return Math.PI;
+}
+
+#JLUCID
+
+A
+where
+	// A is an array of 9 FFT values with a
+	// normal FFT applied to the array below.
+
+	A = fft([1, 2, 3, 4, 6, 7, 8, 9], 9, 1);
+
+	fft(inputValues, length, sign) = fftValues
+		where
+			fftValues = apply(length, reverse(length, inputValues), sign);
+
+			apply(len, coeffs, direction) = coeffs @.s (N - 1)
+				where
+					dimension s;
+					
+					N = 2 * len;
+					mmax = (2 fby.s istep) upon(mmax < N);
+
+					coeffs[J / 2] = coeffs[I / 2] - tempr;
+					coeffs[I / 2] = coeffs[I / 2] + tempr;
+
+					where
+						istep = mmax fby.s (istep) * 2;
+						
+						M @.m mmax
+						where
+							dimension m;
+
+							M = (0 fby.m (M + 2)) upon (M < mmax);
+
+							tempr = wr * coeffs[J / 2] - wi * coeffs[J / 2];
+
+							J = I + mmax;
+
+							wr = 1.0 fby.m ((wtemp = wr) * wpr - wi * wpi + wr);
+							wi = 0.0 fby.m (wi * wpr + wtemp * wpi + wi);
+	
+							where
+								dimension i;
+								I = (M fby.i (I + istep)) upon (I < N);
+								theta = (direction * 2 * pi()) / mmax;
+								wtemp = sin(0.5 * theta);
+								wpr   = -2.0 * wtemp * wtemp;
+								wpi   = sin(theta);
+							end;
+						end;
+					end;
+				end;
+	
+			// Binary reversion
+			reverse(l, vals) = out @.i length
+				where
+					dimension i;
+					out[t] = vals[#.i] @ (#.i + 1) @.bit maxbits(length);
+					where
+						dimension bit;
+
+						t = 0 fby.bit ((t * 2) | (n & 1));
+						n = #i fby.bit (n / 2);
+					end;
+				end;
+		
+			// Determine max number of bits
+			maxbits(len) = (mbits - 1) @.m 16
+				where
+					dimension m;
+
+					mbits = ( 0 fby.m (mbits + 1) ) upon (mbits < 16 && n != 0);
+					n = len fby.m (n / 2);
+				end;
+		end;
+end
+
+// EOF

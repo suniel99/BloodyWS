@@ -1,0 +1,102 @@
+<html>
+<title>GIPSY WebEditor Portal</title>
+<body>
+
+<h1>GIPSY WebEditor Portal</h1>
+
+<p>$Revision: 1.1 $</p>
+
+<hr />
+
+<form>
+
+<table width="100%" border="1" cellspacing="0" cellpadding="5">
+<tr>
+<td valign="top">
+Program Text:<br />
+<textarea name="source" cols="80" rows="25">
+A + B
+where
+  A = 1;
+  B = 2;
+end;
+</textarea>
+
+<hr />
+
+Output:
+<hr />
+
+<pre>
+Compiling...
+Starting interpreter...
+Result: 3
+Done.
+</pre>
+<hr />
+</td>
+
+<td valign="top">
+Intensional Dialect:<br />
+<select>
+<option>GIPSY</option>
+<option>GIPL</option>
+<option>JLucid</option>
+<option>Objective Lucid</option>
+<option>Indexical Lucid</option>
+<option>Tensor Lucid</option>
+<option>Onyx</option>
+<option>GLU</option>
+<option>GLU#</option>
+</select>
+
+<hr />
+
+Test Programs:<br />
+<select>
+<option>life.ipl</option>
+<option>car-oo.ipl</option>
+<option>philosophers.ipl</option>
+<option>merge.ipl</option>
+</select>
+
+<hr />
+
+Controls:<br />
+<input type="button" value="Load" /><br />
+<input type="button" value="Parse" /><br />
+<input type="button" value="Run" /><br />
+<input type="button" value="Stop" /><br />
+<input type="button" value="Print" /><br />
+<input type="checkbox"> debug mode<br />
+
+<hr />
+
+<input type="button" value="Start GEE Services" /><br />
+<input type="checkbox"> All<br />
+<input type="checkbox" checked="checked"> Threaded (local)<br />
+<input type="checkbox"> RMI<br />
+<input type="checkbox"> Jini<br />
+<input type="checkbox"> DCOM+<br />
+<input type="checkbox"> CORBA<br />
+<input type="checkbox"> GIPSY Sockets<br />
+
+<hr />
+
+<input type="button" value="Download Worker" /><br />
+<input type="button" value="Register Worker" /><br />
+
+</td>
+
+</tr>
+</table>
+</form>
+
+<div align="center">
+Author: <a href="mailto:mokhov@cs.concordia.ca">Serguei Mokhov</a><br />
+<a href="COPYRIGHT">Copyright &copy; 2005 The GIPSY Development Group</a><br />
+Concordia University, Montr&eacute;al, Qu&eacute;bec, Canada<br />
+</div>
+
+</body>
+</html>

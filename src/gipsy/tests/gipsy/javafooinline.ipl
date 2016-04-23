@@ -1,0 +1,8 @@
+F @.d 3
+where
+	dimension d;
+	F = foo(#.d);
+	where
+		foo(i) = int foo(int i) { return i + 1; }
+	end;
+end

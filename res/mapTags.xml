@@ -1,0 +1,38 @@
+<gamemap>
+
+	<continents>
+		<continent name="">
+		</continent>
+	</continents>
+	
+	<geostates>
+		<geostate id="" name="">	
+		</geostate>
+	</geostates>
+	<cities>
+		<city name="">
+		</city>
+	</cities>
+	<countries>
+		<country name="">
+		</country>
+	</countries>
+	
+	<players>
+		<player name="">
+		</player>
+	</players>
+	
+	<edges>
+		<edge id="">
+		</edge>	
+	</edges>
+	
+	<connection id="">
+		<geostate id="">
+		</geostate>
+		<geostate id="">
+		</geostate>
+	</connection>
+</gamemap>
+

@@ -1,0 +1,73 @@
+digraph G {
+	graph [rankdir=LR];
+	node [label="\N"];
+	edge [arrowsize="0.7", arrowtail=none];
+	graph [bb="0,0,582,184"];
+	{
+		graph [rank=max];
+		graph [bb=""];
+		aa4 [label="", shape=house, orientation=270, pos="547,44", width="0.75", height="0.50"];
+	}
+	subgraph cluster0 {
+		graph [label=START];
+		graph [color=hot_pink];
+		graph [fontcolor=hot_pink];
+		graph [lp="42,174"];
+		graph [bb="8,8,490,164"];
+		node [shape=box];
+		subgraph cluster1 {
+			graph [label=X];
+			graph [lp="49,166"];
+			graph [bb="36,44,398,156"];
+			{
+				graph [rank=max];
+				graph [lp=""];
+				graph [bb=""];
+				aa2 [label="", shape=point, pos="388,58", width="0.06", height="0.06"];
+			}
+			{
+				graph [rank=min];
+				graph [lp=""];
+				graph [bb=""];
+				aa8 [label=1, pos="211,70", width="0.75", height="0.50"];
+			}
+			subgraph cluster2 {
+				graph [label=Y];
+				graph [lp="77,158"];
+				graph [bb="64,96,221,148"];
+				{
+					graph [rank=max];
+					graph [lp=""];
+					graph [bb=""];
+					aa3 [label="", shape=point, pos="211,111", width="0.06", height="0.06"];
+				}
+				{
+					graph [rank=min];
+					graph [lp=""];
+					graph [bb=""];
+					aa9 [label=3, pos="119,122", width="0.75", height="0.50"];
+				}
+				aa9 -> aa3 [pos="e,209,111 146,119 166,116 194,113 206,111"];
+			}
+			op7 [label=ADD, pos="303,70", width="0.75", height="0.50"];
+			op7 -> aa2 [pos="e,386,58 330,66 348,63 371,61 382,59"];
+			aa3 -> op7 [headlabel=1, pos="e,279,88 213,111 218,111 229,111 238,109 251,105 263,98 274,92", head_lp="275,97"];
+			aa8 -> op7 [headlabel=2, pos="e,276,70 238,70 248,70 259,70 269,70", head_lp="267,74"];
+		}
+		subgraph cluster3 {
+			graph [label=Y];
+			graph [lp="371,46"];
+			graph [bb="358,16,398,36"];
+			{
+				graph [rank=max];
+				graph [lp=""];
+				graph [bb=""];
+				aa6 [label="", shape=point, pos="388,26", width="0.06", height="0.06"];
+			}
+		}
+		op5 [label=ADD, pos="455,44", width="0.75", height="0.50"];
+		aa2 -> op5 [headlabel=1, pos="e,428,50 390,58 395,56 408,54 421,51", head_lp="420,55"];
+		aa6 -> op5 [headlabel=2, pos="e,428,37 390,27 395,28 408,31 421,35", head_lp="418,39"];
+	}
+	op5 -> aa4 [pos="e,525,44 482,44 494,44 507,44 518,44"];
+}

@@ -1,0 +1,5 @@
+N @.d 2
+where
+	dimension d;
+	N = 42 fby.d (N + 1);
+end

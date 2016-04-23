@@ -1,0 +1,50 @@
+digraph G {
+rankdir = LR;
+edge [arrowsize=0.7];
+edge [arrowtail="none"];
+
+aa2 [shape=house,orientation=270,label=""];
+{rank="max";aa2;}
+
+
+subgraph cluster0{
+node [shape=box];
+label = "FUNCTION_fby";
+color = hot_pink;
+fontcolor = hot_pink;
+
+
+op3 [label="IF"];
+op3 ->aa2;
+
+op4 [label="EQ"];
+op4 ->op3 [headlabel="1"];
+
+op5 [label="HARSH"];
+op5 ->op4 [headlabel="1"];
+aa6 [label="D", shape=ellipse];
+aa6 -> op5 [headlabel="1"];
+aa7 [label="0"];
+aa7 -> op4 [headlabel="2"];
+aa8 [label="L"];
+aa8 -> op3 [headlabel="2"];
+
+op9 [label="AT"];
+op9 ->op3 [headlabel="3"];
+aa10 [label="R"];
+aa10 -> op9 [headlabel="1"];
+aa11 [label="D", shape=ellipse];
+aa11 -> op9 [headlabel="2"];
+
+op12 [label="MIN"];
+op12 ->op9 [headlabel="3"];
+
+op13 [label="HARSH"];
+op13 ->op12 [headlabel="1"];
+aa14 [label="D", shape=ellipse];
+aa14 -> op13 [headlabel="1"];
+aa15 [label="1"];
+aa15 -> op12 [headlabel="2"];
+{rank="min";aa15;aa14;aa11;aa10;aa8;aa7;aa6;}
+
+}}

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+java -Djava.security.manager 
+     -Djava.security.policy=./runtime/gipsy/GEE/IDP/config/start.policy \
+     -cp src:lib/marf.jar:lib/netcdfAll.jar gipsy.GEE.GEE $@  
+    
+
+

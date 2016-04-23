@@ -1,0 +1,103 @@
+Reference design for the MEMOCODE 2012 design contest
+
+Stephen A. Edwards, Columbia University
+
+http://www.memocode-conference.com/
+
+This is a brute-force, exact DNA sequence aligner.  Given a set of
+short sequence reads (e.g., 100 base pairs each), it attempts to
+locate identical subsequences in a reference genome: a kind of "fgrep"
+for DNA.  While such exact subsequence matching generally isn't enough
+to reassemble the genome of an arbitrary individual (there needs to be
+some differences, otherwise we would all be identical twins), it is a
+good initial filter for the volumes of data produced by modern
+high-speed sequencing machines.
+
+align.c contains the implementation of the matching algorithm.  In it,
+the "match" function does most of the work by stepping through the
+reference genome and comparing each sequence against it.  The "main"
+function handles command-line processing, disk I/O, and result
+reporting.  See comments in the source for details about how
+everything works.
+
+The reference aligner takes two binary files that contain base pairs
+packed four-to-a-byte.  The two LSBs in these bytes represent the
+first base pair, the next two bits the next pair, etc.  The first file
+is assumed to contain the reference genome; the second holds the
+sequence data.  Each sequence must be the same length (e.g., 100 base
+pairs); sequence data is padded so each starts on an eight-byte
+boundary.
+
+Three helper programs manipulate this packed binary format, which was
+invented for this contest:
+
+fasta2bin.c converts a textual FASTA file, such as the human reference
+	    genome used by the 1000 Genomes project, into the packed
+	    binary format.  A typical use:
+
+	    gunzip -c human_g1k_v37.fasta.gz | ./fasta2bin > human_g1k_v37.bin
+
+fastq2bin.c converts a textual FASTQ file, such as those from short
+	    sequence reads generated as part of the 1000 Genomes
+	    project, into the packed (and padded) binary format.  A
+	    typical use:
+
+	    gunzip -c ERR050082.filt.fastq.gz | ./fastq2bin > ERR050082.filt.bin
+
+bin2acgt.c prints the contents of a packed binary file.  The user can
+	   control the number of bytes of pairs printed per line.  A
+	   typical use:
+
+	   ./bin2acgt 32 < short_sequences.bin
+
+The Makefile contains a rule for compiling and running these on a
+short testcase:
+
+$ make check
+cc -O -o fasta2bin fasta2bin.c
+cc -O -o bin2acgt bin2acgt.c
+cc -O -o fastq2bin fastq2bin.c
+cc -O -o align align.c
+gunzip -c short_reference.fasta.gz | ./fasta2bin > short_reference.bin
+gunzip -c short_sequences.fastq.gz | ./fastq2bin > short_sequences.bin
+./align short_reference.bin short_sequences.bin 100 > short.txt
+if diff short.txt short-golden.txt ; \
+	then echo "SUCCESS" ; \
+	else echo "FAILED" && exit 1 ; \
+	fi
+SUCCESS
+
+The result of the comparison goes into short.txt:
+
+       0:         0
+       1:         1
+       2:         2
+       3:         3
+       4:         3
+       5:         8
+       6:        10
+       7:     19920 + 2 others
+       8:      1130
+       9: -
+
+Each line indicates the results for a single sequence.  For example,
+sequence 6 was found once at offset 10; three copies of sequence 7
+were found, one was at offset 19920; and sequence 9 was never found.
+
+Another rule downloads the human reference genome and a short sequence
+read file, converts them into the packed binary format, and then runs
+the aligner on a small subset of the sequences.  This takes 10s of
+minutes on a fast machine with a fast Internet connection; your
+mileage may vary.  This is intended as an automated way to run the
+tool on "real" data and probably isn't any more thorough than the
+much-quicker "make check."
+
+$ make long-check
+....
+(runs wget, gunzip, and align.  WARNING: very time-consuming)
+....
+SUCCESS
+
+The Makefile contains other rules for downloading a small fraction of
+the data on the 1000 Genomes FTP site.
+

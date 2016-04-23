@@ -1,0 +1,13 @@
+y
+    where
+       y=z+4
+       where 
+          z=9;
+       end;
+       y=d
+       where
+          d=9.0;
+       end;       
+    end
+    
+    

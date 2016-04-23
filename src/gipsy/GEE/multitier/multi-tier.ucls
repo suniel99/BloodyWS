@@ -1,0 +1,386 @@
+<class-diagram version="0.9.82" automaticImage="PNG" icons="true" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <enumeration corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.EDMFImplementation" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/EDMFImplementation.java" binary="false">    
+    <position x="101" y="97" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </enumeration>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.GenericTierWrapper" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/GenericTierWrapper.java" binary="false">    
+    <position x="650" y="202" width="274" height="206"/>    
+    <display autosize="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.IMultiTierWrapper" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/IMultiTierWrapper.java" binary="false">    
+    <position x="789" y="86" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.NodeController" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/NodeController.java" binary="false">    
+    <position x="337" y="85" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.TierFactory" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/TierFactory.java" binary="false">    
+    <position x="210" y="571" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.DGT.DGTController" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/DGT/DGTController.java" binary="false">    
+    <position x="322" y="261" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.DGT.DGTFactory" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/DGT/DGTFactory.java" binary="false">    
+    <position x="208" y="758" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.DGT.DGTWrapper" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/DGT/DGTWrapper.java" binary="false">    
+    <position x="405" y="479" width="217" height="187"/>    
+    <display autosize="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.DST.DSTController" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/DST/DSTController.java" binary="false">    
+    <position x="107" y="263" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.DST.DSTFactory" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/DST/DSTFactory.java" binary="false">    
+    <position x="592" y="761" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.DST.DSTWrapper" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/DST/DSTWrapper.java" binary="false">    
+    <position x="743" y="553" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.DWT.DWTController" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/DWT/DWTController.java" binary="false">    
+    <position x="536" y="261" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.DWT.DWTFactory" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/DWT/DWTFactory.java" binary="false">    
+    <position x="939" y="759" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.DWT.DWTWrapper" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/DWT/DWTWrapper.java" binary="false">    
+    <position x="869" y="480" width="256" height="163"/>    
+    <display autosize="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.multitier.GMT.GMTWrapper" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/multitier/GMT/GMTWrapper.java" binary="false">    
+    <position x="1195" y="538" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.interfaces.GEERPool" project="gipsy" 
+    file="/gipsy/src/gipsy/interfaces/GEERPool.java" binary="false">    
+    <position x="1103" y="146" width="-1" height="-1"/>    
+    <display autosize="true" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.interfaces.GIPSYProgram" project="gipsy" 
+    file="/gipsy/src/gipsy/interfaces/GIPSYProgram.java" binary="false">    
+    <position x="1145" y="233" width="241" height="243"/>    
+    <display autosize="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.IVW.Warehouse.IVWInterface" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/IVW/Warehouse/IVWInterface.java" binary="false">    
+    <position x="1194" y="636" width="169" height="181"/>    
+    <display autosize="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <class corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.GEE" project="gipsy" file="/gipsy/src/gipsy/GEE/GEE.java" 
+    binary="false">    
+    <position x="1155" y="26" width="197" height="45"/>    
+    <display autosize="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </class>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.IDP.ITransportAgent" project="gipsy" 
+    file="/gipsy/src/gipsy/GEE/IDP/ITransportAgent.java" binary="false">    
+    <position x="192" y="338" width="176" height="48"/>    
+    <display autosize="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.IDP.DemandGenerator.jms.IJMSTransportAgent" 
+    project="gipsy" file="/gipsy/src/gipsy/GEE/IDP/DemandGenerator/jms/IJMSTransportAgent.java" binary="false">    
+    <position x="330" y="406" width="168" height="47"/>    
+    <display autosize="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <interface corner="BOTTOM_RIGHT" language="java" name="gipsy.GEE.IDP.DemandGenerator.jini.rmi.IJINITransportAgent" 
+    project="gipsy" file="/gipsy/src/gipsy/GEE/IDP/DemandGenerator/jini/rmi/IJINITransportAgent.java" binary="false">    
+    <position x="24" y="406" width="202" height="48"/>    
+    <display autosize="false" package="true" initial-value="false" signature="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true"/>      
+      <operations public="true" package="true" protected="true" private="true"/>    
+    </display>  
+  </interface>  
+  <association>    
+    <source project="gipsy" name="gipsy.GEE.multitier.GenericTierWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/GenericTierWrapper.java" binary="false" navigable="false">      
+      <attribute name="oTA"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="gipsy" name="gipsy.GEE.IDP.ITransportAgent" file="/gipsy/src/gipsy/GEE/IDP/ITransportAgent.java" 
+      binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="gipsy" name="gipsy.GEE.GEE" file="/gipsy/src/gipsy/GEE/GEE.java" binary="false" navigable="false">      
+      <attribute name="oGIPSYProgram"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="gipsy" name="gipsy.interfaces.GIPSYProgram" file="/gipsy/src/gipsy/interfaces/GIPSYProgram.java" 
+      binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DWT.DWTWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/DWT/DWTWrapper.java" binary="false" navigable="false">      
+      <attribute name="oGEERPool"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="gipsy" name="gipsy.interfaces.GEERPool" file="/gipsy/src/gipsy/interfaces/GEERPool.java" 
+      binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DGT.DGTWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/DGT/DGTWrapper.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.multitier.GenericTierWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/GenericTierWrapper.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DST.DSTFactory" 
+      file="/gipsy/src/gipsy/GEE/multitier/DST/DSTFactory.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.multitier.TierFactory" 
+      file="/gipsy/src/gipsy/GEE/multitier/TierFactory.java" binary="false"/>  
+  </generalization>  
+  <association>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DWT.DWTFactory" 
+      file="/gipsy/src/gipsy/GEE/multitier/DWT/DWTFactory.java" binary="false" navigable="false">      
+      <attribute name="oDWTWrapper"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="gipsy" name="gipsy.GEE.multitier.DWT.DWTWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/DWT/DWTWrapper.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency>    
+    <source project="gipsy" name="gipsy.GEE.multitier.NodeController" 
+      file="/gipsy/src/gipsy/GEE/multitier/NodeController.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.multitier.EDMFImplementation" 
+      file="/gipsy/src/gipsy/GEE/multitier/EDMFImplementation.java" binary="false"/>  
+  </dependency>  
+  <association>    
+    <source project="gipsy" name="gipsy.GEE.multitier.NodeController" 
+      file="/gipsy/src/gipsy/GEE/multitier/NodeController.java" binary="false" navigable="false">      
+      <attribute name="oTierFactory"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="gipsy" name="gipsy.GEE.multitier.TierFactory" 
+      file="/gipsy/src/gipsy/GEE/multitier/TierFactory.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization>    
+    <source project="gipsy" name="gipsy.GEE.multitier.GMT.GMTWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/GMT/GMTWrapper.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.multitier.GenericTierWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/GenericTierWrapper.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DST.DSTController" 
+      file="/gipsy/src/gipsy/GEE/multitier/DST/DSTController.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.multitier.NodeController" 
+      file="/gipsy/src/gipsy/GEE/multitier/NodeController.java" binary="false"/>  
+  </generalization>  
+  <association>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DST.DSTWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/DST/DSTWrapper.java" binary="false" navigable="false">      
+      <attribute name="oStorageSubsystem"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="gipsy" name="gipsy.GEE.IVW.Warehouse.IVWInterface" 
+      file="/gipsy/src/gipsy/GEE/IVW/Warehouse/IVWInterface.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DST.DSTFactory" 
+      file="/gipsy/src/gipsy/GEE/multitier/DST/DSTFactory.java" binary="false" navigable="false">      
+      <attribute name="oDSTWrapper"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="gipsy" name="gipsy.GEE.multitier.DST.DSTWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/DST/DSTWrapper.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="gipsy" name="gipsy.GEE.multitier.NodeController" 
+      file="/gipsy/src/gipsy/GEE/multitier/NodeController.java" binary="false" navigable="false">      
+      <attribute name="oTierList"/>      
+      <multiplicity minimum="0" maximum="2147483647"/>    
+    </source>    
+    <target project="gipsy" name="gipsy.GEE.multitier.IMultiTierWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/IMultiTierWrapper.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DGT.DGTFactory" 
+      file="/gipsy/src/gipsy/GEE/multitier/DGT/DGTFactory.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.multitier.TierFactory" 
+      file="/gipsy/src/gipsy/GEE/multitier/TierFactory.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DWT.DWTFactory" 
+      file="/gipsy/src/gipsy/GEE/multitier/DWT/DWTFactory.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.multitier.TierFactory" 
+      file="/gipsy/src/gipsy/GEE/multitier/TierFactory.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="gipsy" name="gipsy.GEE.IDP.DemandGenerator.jini.rmi.IJINITransportAgent" 
+      file="/gipsy/src/gipsy/GEE/IDP/DemandGenerator/jini/rmi/IJINITransportAgent.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.IDP.ITransportAgent" file="/gipsy/src/gipsy/GEE/IDP/ITransportAgent.java" 
+      binary="false"/>  
+  </generalization>  
+  <association>    
+    <source project="gipsy" name="gipsy.GEE.GEE" file="/gipsy/src/gipsy/GEE/GEE.java" binary="false" navigable="false">      
+      <attribute name="oTierWrappers"/>      
+      <multiplicity minimum="0" maximum="2147483647"/>    
+    </source>    
+    <target project="gipsy" name="gipsy.GEE.multitier.IMultiTierWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/IMultiTierWrapper.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association>    
+    <source project="gipsy" name="gipsy.interfaces.GEERPool" file="/gipsy/src/gipsy/interfaces/GEERPool.java" 
+      binary="false" navigable="false">      
+      <attribute name="oGEERPool"/>      
+      <multiplicity minimum="0" maximum="2147483647"/>    
+    </source>    
+    <target project="gipsy" name="gipsy.interfaces.GIPSYProgram" file="/gipsy/src/gipsy/interfaces/GIPSYProgram.java" 
+      binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DWT.DWTController" 
+      file="/gipsy/src/gipsy/GEE/multitier/DWT/DWTController.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.multitier.NodeController" 
+      file="/gipsy/src/gipsy/GEE/multitier/NodeController.java" binary="false"/>  
+  </generalization>  
+  <association>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DGT.DGTFactory" 
+      file="/gipsy/src/gipsy/GEE/multitier/DGT/DGTFactory.java" binary="false" navigable="false">      
+      <attribute name="oDGTWrapper"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="gipsy" name="gipsy.GEE.multitier.DGT.DGTWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/DGT/DGTWrapper.java" binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization>    
+    <source project="gipsy" name="gipsy.GEE.IDP.DemandGenerator.jms.IJMSTransportAgent" 
+      file="/gipsy/src/gipsy/GEE/IDP/DemandGenerator/jms/IJMSTransportAgent.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.IDP.ITransportAgent" file="/gipsy/src/gipsy/GEE/IDP/ITransportAgent.java" 
+      binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DST.DSTWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/DST/DSTWrapper.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.multitier.GenericTierWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/GenericTierWrapper.java" binary="false"/>  
+  </generalization>  
+  <realization>    
+    <source project="gipsy" name="gipsy.GEE.multitier.GenericTierWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/GenericTierWrapper.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.multitier.IMultiTierWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/IMultiTierWrapper.java" binary="false"/>  
+  </realization>  
+  <association>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DGT.DGTWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/DGT/DGTWrapper.java" binary="false" navigable="false">      
+      <attribute name="oGEERPool"/>      
+      <multiplicity minimum="0" maximum="1"/>    
+    </source>    
+    <target project="gipsy" name="gipsy.interfaces.GEERPool" file="/gipsy/src/gipsy/interfaces/GEERPool.java" 
+      binary="false" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DGT.DGTController" 
+      file="/gipsy/src/gipsy/GEE/multitier/DGT/DGTController.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.multitier.NodeController" 
+      file="/gipsy/src/gipsy/GEE/multitier/NodeController.java" binary="false"/>  
+  </generalization>  
+  <generalization>    
+    <source project="gipsy" name="gipsy.GEE.multitier.DWT.DWTWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/DWT/DWTWrapper.java" binary="false"/>    
+    <target project="gipsy" name="gipsy.GEE.multitier.GenericTierWrapper" 
+      file="/gipsy/src/gipsy/GEE/multitier/GenericTierWrapper.java" binary="false"/>  
+  </generalization>  
+  <classifier-display autosize="true" package="true" initial-value="false" signature="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

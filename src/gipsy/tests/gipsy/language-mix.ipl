@@ -1,0 +1,59 @@
+/**
+ * Language-mix GIPSY program.
+ *
+ * $Id: language-mix.ipl,v 1.6 2005/10/11 08:34:10 mokhov Exp $
+ * $Revision: 1.6 $
+ * $Date: 2005/10/11 08:34:10 $
+ *
+ * @author Serguei Mokhov
+ */
+#typedecl
+
+myclass;
+
+#funcdecl
+
+myclass foo(int,double);
+float bar(int,int):"ftp://newton.cs.concordia.ca/cool.class":baz;
+int f1();
+
+#JAVA
+myclass foo(int a, double b)
+{
+     return new myclass(new Integer((int)(b + a)));
+}
+
+class myclass
+{
+	public myclass(Integer a)
+	{
+		System.out.println(a);
+	}
+}
+
+#CPP
+#include <iostream>
+
+int f1(void)
+{
+    cout << "hello";
+    return 0;
+}
+
+#OBJECTIVELUCID
+
+A + bar(B, C)
+where
+	A = foo(B, C).intValue();
+	B = f1();
+	C = 2.0;
+end
+
+/*
+ * in theory we could write more than one intensional chunk,
+ * then those chunks would evaluate as separate possibly
+ * totally independent expressions in parallel that happened
+ * to use the same set of imperative functions.
+ */
+
+// EOF

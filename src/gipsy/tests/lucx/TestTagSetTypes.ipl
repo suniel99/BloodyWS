@@ -1,0 +1,30 @@
+n @ [d : 2] \intersect [d : 2, e :3 ]
+  where 
+     /* Ordered finite periodic*/
+     //dimension d : ordered finite periodic {<1,2,3>:3}; 
+     
+     /*Ordered finite nonperiodic/
+      //dimension d : ordered finite nonperiodic {1,2,3};
+     // dimension d : ordered finite nonperiodic {tiger, dragon};
+      
+    // dimension d : ordered finite nonperiodic {1 to 100};     
+   //dimension d : ordered finite nonperiodic {1 to 100 step 2};
+     
+     /*Ordered infinite periodic*/
+    //dimension d : ordered infinite periodic {<1,2,3>};
+    
+    /*Ordered infinite Nonperiodic*/
+    //dimension d : ordered infinite nonperiodic {int};
+    //dimension d : ordered infinite nonperiodic {to 100};
+    //dimension d : ordered infinite nonperiodic {to 100 step 2};  
+   //dimension d : ordered infinite nonperiodic {2 to};
+   //dimension d : ordered infinite nonperiodic {2 to step 2};
+  
+  /*Unordered finite periodic*/
+  //dimension d : unordered finite periodic{<3,2,9>:4}; 
+  
+  /*Unordered finite nonperiodic*/
+  //dimension d : unordered finite nonperiodic {3,2,5,6,1};
+  /*Unordered infinite periodic*/
+    dimension d : unordered infinite periodic{<3,2,9>};
+  end

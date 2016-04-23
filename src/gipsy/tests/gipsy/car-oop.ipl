@@ -1,0 +1,56 @@
+#typedecl
+Car;
+
+#JAVA
+public class Car
+{
+	public int x = 0;
+
+	public double speed;
+	public double speeddrop;
+	public double fuel;
+	public double fueldrainrate;
+
+	public Car()
+	{
+		// Assume initially car was already moving.
+		speed = 100.0; fuel = 40.5;
+		fueldrainrate = 0.018; speeddrop = 0.1;
+	}
+
+	// Move by a number of steps assuming constant speed
+	// and decelerate when ran out of fuel.
+	public Car move(int steps)
+	{
+		if(fuel > 0)
+		{
+			fuel -= fueldrainrate * speed * steps;
+			x += steps;
+		}
+		else if(speed > 0)
+		{
+			x += steps;
+			speed -= speeddrop * steps;
+		}
+
+		return this;
+	}
+
+	public void printCarState()
+	{
+		System.out.println
+		(
+			"Speed: " + speed + ", fuel: " + fuel +
+			", drain: " + fueldrainrate + ", x: " + x +
+			", speeddrop: " + speeddrop
+		);
+	}
+}
+
+#OBJECTIVELUCID
+
+(C @.time 15).printCarState[time]()
+where
+	C = Car[time]() fby.time S;
+	S = C.move[time](#.time);
+end

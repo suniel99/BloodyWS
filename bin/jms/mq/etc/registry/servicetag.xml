@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<registry>
+<service_tag>
+<instance_urn>urn:st:4ff61404-4604-4119-bf5a-16cc3aeb5fd3</instance_urn>
+<product_name>Message Queue</product_name>
+<product_version>4.3</product_version>
+<product_urn>urn:uuid:c04a8bed-85d2-11dd-a52f-080020a9ed93</product_urn>
+<product_parent_urn>Unknown</product_parent_urn>
+<product_parent>Unknown</product_parent>
+<product_defined_inst_id>c:\tools\mq4_3</product_defined_inst_id>
+<product_vendor>Sun Microsystems, Inc.</product_vendor>
+<platform_arch>x86</platform_arch>
+<container>Global</container>
+<source>Unknown</source>
+<status>NOT_TRANSFERRED</status>
+<registration_status>NOT_REGISTERED</registration_status>
+</service_tag>
+<registration_reminder>ASK_FOR_REGISTRATION</registration_reminder>
+</registry>

@@ -1,0 +1,546 @@
+load ('dotty.lefty');
+
+dotty.protovt.normal.name = 'GIPSY Graphical Editor';
+dotty.protogt.graph.graphattr.rankdir = "LR";
+####### hello #########
+
+dotty.protogt.actions.node["hello"] =
+  function(gt, vt, obj, data) {
+    echo(obj.name);
+# dump();
+  };
+dotty.protovt.normal.menus['general'][17] = "insert subgraph";
+dotty.protovt.normal.menus['general'][18] = "set subgraph attr";
+dotty.protovt.normal.menus['general'][19] = "edge handle";
+dotty.protovt.normal.menus['general'][20] = "rename";
+dotty.protovt.normal.menus['general'][21] = "remove subgraph";
+
+dotty.protovt.normal.menus['node'][4] = "hello";
+dotty.protovt.normal.menus['node'][5] = "rename";
+# dotty.protovt.normal.menus['node'][13] = "set target";
+# dotty.protovt.normal.menus['node'][14] = "merge in group";
+dotty.protovt.normal.menus['node'][6] = "rank min";
+dotty.protovt.normal.menus['node'][7] = "rank max";
+dotty.protovt.normal.menus['node'][3] = "expand node";
+
+dotty.protovt.normal.menus['edge'][3] = "rename";
+
+
+####### change edge handle ########
+dotty.protogt.actions.general["edge handle"] =  function(gt, vt, data) {
+        if (gt.edgehandles == 0)
+		gt.edgehandles = 1;
+	 else
+		gt.edgehandles = 0;
+gt.redrawgraph (gt, gt.views);
+
+  };
+
+
+####### rename graph node edge ########
+dotty.protogt.actions.general["rename"] =  function(gt, vt, data) {
+     gt.renamegraph (gt, vt, data);
+  };
+
+
+dotty.protogt.actions.node["rename"] = function (gt, vt, obj, data) {
+        gt.renameattr (gt, obj);
+    };
+
+###
+dotty.protogt.renameattr = function (gt, obj) {
+    local kv, t, attr, value;
+
+    if (~(kv = ask ('give new name')))
+        return;
+
+    if (obj.nid >= 0)
+   	 attr = 'label';
+    if (obj.eid >= 0)
+	 attr = 'headlabel';
+
+    value = kv;
+
+    if (
+        obj.attr == gt.graph.graphattr |
+        obj.attr == gt.graph.edgeattr |
+        obj.attr == gt.graph.nodeattr
+    ) {
+        obj.attr[attr] = value;
+        return;
+    }
+    if (obj.nid >= 0) {
+        gt.undrawnode (gt, gt.views, obj);
+        obj.attr[attr] = value;
+        gt.unpacknodeattr (gt, obj);
+        gt.drawnode (gt, gt.views, obj);
+    } else if (obj.eid >= 0) {
+        gt.undrawedge (gt, gt.views, obj);
+        obj.attr[attr] = value;
+        gt.unpackedgeattr (gt, obj);
+        gt.drawedge (gt, gt.views, obj);
+    }
+   gt.redrawgraph (gt, gt.views);
+};
+###
+dotty.protogt.renamegraph = function (gt, vt, data) {
+    local kv, t, attr, value, sgnum, sgnum2, sgrect, sgraph;
+
+    if (~(kv = ask ('give new name')))
+        return;
+
+    attr = 'label';
+    value = kv;
+
+####
+sgnum2=0;
+for(sgnum in gt.graph.graphs){
+	sgrect = gt.graph.graphs[sgnum].rect;
+	if (data.pos.x <= sgrect[1].x)
+	  if(data.pos.x >= sgrect[0].x)
+		if(data.pos.y <= sgrect[1].y)
+			if(data.pos.y >= sgrect[0].y)
+			{
+				if(~gt.graph.graphs[sgnum].graphs[sgnum2])
+				sgnum2 = sgnum;
+			}
+}
+
+gt.graph.graphs[sgnum2].graphattr[attr] = value;
+
+#sgraph = gt.graph.graphs[sgnum];
+#gt.unpacksgraphattr (gt, sgraph);
+#gt.undrawsgraph (gt, gt.views, sgraph);
+#gt.drawsgraph (gt, gt.views, sgraph);
+gt.redrawgraph (gt, gt.views);
+####
+};
+
+####### grouping #########
+
+
+dotty.protogt.actions.node["set target"] = function (gt, vt, obj, data) {
+        if(obj.nid >= 0) {
+            if(dotty.target) {
+              gt.undrawnode(gt, gt.views, dotty.target);
+              dotty.target.attr['color']='black';
+              gt.unpacknodeattr(gt, dotty.target);
+              gt.drawnode(gt, gt.views, dotty.target);
+            }
+            dotty.target = obj;
+            dotty.target.attr['group'] = dotty.target.name;
+            echo ('setting ', obj.name, ' as target');
+            gt.undrawnode(gt, gt.views, obj);
+            obj.attr['color']='blue';
+            gt.unpacknodeattr(gt,obj);
+            gt.drawnode(gt, gt.views, obj);
+        }
+    };
+dotty.protogt.actions.node["merge in group"] = function (gt, vt, obj, data) {
+       local grouplabel, nlist;
+        if(obj.nid >= 0) {
+          if(dotty.target) {
+            if(dotty.target.attr['grouped']) {
+              grouplabel = dotty.target.attr['label'];
+            } else {
+              grouplabel = dotty.target.name;
+            }
+            echo('adding ', obj.name, ' to group ', grouplabel);
+            gt.undrawnode(gt, dotty.target);
+            obj.attr['group']= grouplabel;
+            dotty.target =
+              gt.groupnodes(gt, [obj.nid = obj;],
+                  dotty.target, dotty.target.pos, dotty.target.size,
+                ['label' = grouplabel;
+                 'color' = 'blue';
+                 'grouped' = 1; ], 0, 1);
+            gt.redrawgraph(gt, [vt.vtid = vt;]);
+          }
+        }
+    };
+
+
+######## insertnode ###########
+
+dotty.protogt.insertnode = function (gt, pos, size, name, attr, show) {
+    local nid, node, aid, sgnum, sgrect;
+
+    nid = gt.graph.maxnid;
+    if (~name) {
+        while (gt.graph.nodedict[(name = concat ('n', nid))] >= 0)
+            nid = nid + 1;
+    } else if (gt.graph.nodedict[name] >= 0) {
+        dotty.message (0, concat ('node: ', name, ' exists'));
+        return null;
+    }
+    gt.graph.nodedict[name] = nid;
+    gt.graph.maxnid = nid + 1;
+    gt.graph.nodes[nid] = [
+        dotty.keys.nid   = nid;
+        dotty.keys.name  = name;
+        dotty.keys.attr  = copy (gt.graph.nodeattr);
+        dotty.keys.edges = [];
+    ];
+    node = gt.graph.nodes[nid];
+    if (~attr)
+        attr = [];
+    if (~attr.label)
+        attr.label = '\N';
+    for (aid in attr)
+        node.attr[aid] = attr[aid];
+    gt.unpacknodeattr (gt, node);
+    if (~pos)
+        pos = ['x' = 10; 'y' = 10;];
+    node[dotty.keys.pos] = copy (pos);
+    if (~size)
+        size = ['x' = strlen (attr.label) * 30; 'y' = 30;];
+    if (size.x == 0)
+        size.x = 30;
+    node[dotty.keys.size] = copy (size);
+
+####
+for(sgnum in gt.graph.graphs){
+	sgrect = gt.graph.graphs[sgnum].rect;
+if (pos.x <= sgrect[1].x)
+	if(pos.x >= sgrect[0].x)
+		if(pos.y <= sgrect[1].y)
+			if(pos.y >= sgrect[0].y)
+			{
+				gt.graph.graphs[sgnum].nodes[nid] = gt.graph.nodes[nid];
+			}
+}
+####
+    if (show)
+        gt.drawnode (gt, gt.views, node);
+    if (~gt.noundo) {
+        gt.startadd2undo (gt);
+        gt.currundo.inserted.nodes[nid] = node;
+        gt.endadd2undo (gt);
+    }
+    return node;
+};
+
+######## move node ###########
+
+dotty.protogt.movenode = function (gt, node, pos) {
+    local ppos, eid, edge, p, fp, lp, sgnum, sgrect, snid;
+
+    ppos = copy (node.pos);
+    gt.undrawnode (gt, gt.views, node);
+    node.pos.x = pos.x;
+    node.pos.y = pos.y;
+    if (node.attr.shape == 'record')
+        gt.moverecordfields (gt, node.fields, pos.x - ppos.x, pos.y - ppos.y);
+    for (eid in node.edges) {
+        edge = node.edges[eid];
+        if (~edge.dir & edge.head ~= edge.tail) {
+            p = edge.tail.pos;
+            fp = edge.points[0];
+            lp = edge.points[tablesize (edge.points)  - 1];
+            if (((p.x - fp.x) * (p.x - fp.x) + (p.y - fp.y) * (p.y - fp.y)) <
+                    ((p.x - lp.x) * (p.x - lp.x) + (p.y - lp.y) * (p.y - lp.y)))
+                edge.dir = 1;
+            else
+                edge.dir = -1;
+        }
+        gt.moveedge (gt, edge, node, ppos, pos);
+    }
+    gt.drawnode (gt, gt.views, node);
+
+#####
+snid = node["nid"];
+
+# if it is rank node
+if(dotty.sgrank)
+{
+gt.graph.graphs[dotty.sgrank].nodes[node.nid] = node;
+dotty.sgrank = null;
+return;
+}
+
+#del old node
+
+for(sgnum in gt.graph.graphs){
+if (gt.graph.graphs[sgnum].nodes[snid])
+{
+remove(snid, gt.graph.graphs[sgnum].nodes);
+}
+}
+
+#insert new node
+
+for(sgnum in gt.graph.graphs){
+	sgrect = gt.graph.graphs[sgnum].rect;
+if (pos.x <= sgrect[1].x)
+	if(pos.x >= sgrect[0].x)
+		if(pos.y <= sgrect[1].y)
+			if(pos.y >= sgrect[0].y)
+			{
+				gt.graph.graphs[sgnum].nodes[snid] = gt.graph.nodes[snid];
+			}
+}
+
+#####
+
+};
+
+####### insert subgraph ########
+
+dotty.protogt.actions.general["insert subgraph"] =
+  function(gt, vt, data) {
+        if (~data.obj)
+            gt.insertsgraph (gt, 0, null, 1, data);
+  };
+
+
+###
+
+dotty.protogt.insertsgraph = function (gt, rank, attr, show, data) {
+    local gid, sgraph, aid, sgnum, sgrect, name;
+
+    if (~gt)
+        return null;
+    gid = gt.graph.maxgid;
+    if (rank==0) {
+        while (gt.graph.graphdict[(name = concat ('cluster', gid))] >= 0)
+            gid = gid + 1;
+    }
+    else {
+	name= gid;
+    }
+
+    gt.graph.graphdict[name] = gid;
+    gt.graph.maxgid = gid + 1;
+    gt.graph.graphs[gid] = [
+        dotty.keys.gid   = gid;
+        dotty.keys.name  = name;
+        dotty.keys.gattr = copy (gt.graph.graphattr);
+        dotty.keys.nattr = copy (gt.graph.nodeattr);
+        dotty.keys.eattr = copy (gt.graph.edgeattr);
+#	'rect' = [ 0=['x'=data.pos.x-60;'y'=data.pos.y-60;];1=['x'=data.pos.x+60;'y'=data.pos.y+60;];];
+    ];
+   if(rank==0)
+       gt.graph.graphs[gid].rect = [ 0=['x'=data.pos.x-60;'y'=data.pos.y-60;];1=['x'=data.pos.x+60;'y'=data.pos.y+60;];];
+   else
+	dotty.sgrank = gid;
+#	gt.graph.graphs[gid].rect = [ 0=['x'=data.pos.x-0.1;'y'=data.pos.y-0.1;];1=['x'=data.pos.x+0.1;'y'=data.pos.y+0.1;];];
+
+    sgraph = gt.graph.graphs[gid];
+    if (~attr)
+        attr = [];
+    if (rank==0 & ~attr.label)
+        attr.label = 'New';
+    for (aid in attr)
+        sgraph.graphattr[aid] = attr[aid];
+    gt.unpacksgraphattr (gt, sgraph);
+####
+for(sgnum in gt.graph.graphs){
+    if (sgnum ~= gid)
+	sgrect = gt.graph.graphs[sgnum].rect;
+	if (data.pos.x <= sgrect[1].x)
+	  if(data.pos.x >= sgrect[0].x)
+		if(data.pos.y <= sgrect[1].y)
+			if(data.pos.y >= sgrect[0].y)
+			{
+				gt.graph.graphs[sgnum].graphs[gid] = gt.graph.graphs[gid];
+			}
+}
+####
+
+    if (show)
+        gt.drawsgraph (gt, gt.views, sgraph);
+    return sgraph;
+};
+
+###
+
+####### set subgraph attr ############
+
+dotty.protogt.actions.general["set subgraph attr"] =
+  function(gt, vt, data) {
+        if (~data.obj)
+            gt.setsgraphattr (gt, data);
+  };
+
+
+###
+
+dotty.protogt.setsgraphattr = function (gt, data) {
+    local kv, t, attr, value, sgnum, sgnum2, sgrect, sgraph;
+
+    if (~(kv = ask ('give attr/value, eg. color=blue')))
+        return;
+    t = split (kv, '=');
+    attr = t[0];
+    value = t[1];
+
+####
+sgnum2=0;
+for(sgnum in gt.graph.graphs){
+	sgrect = gt.graph.graphs[sgnum].rect;
+	if (data.pos.x <= sgrect[1].x)
+	  if(data.pos.x >= sgrect[0].x)
+		if(data.pos.y <= sgrect[1].y)
+			if(data.pos.y >= sgrect[0].y)
+			{
+				if(~gt.graph.graphs[sgnum].graphs[sgnum2])
+				sgnum2 = sgnum;
+			}
+}
+
+gt.graph.graphs[sgnum2].graphattr[attr] = value;
+
+#sgraph = gt.graph.graphs[sgnum];
+#gt.unpacksgraphattr (gt, sgraph);
+#gt.undrawsgraph (gt, gt.views, sgraph);
+#gt.drawsgraph (gt, gt.views, sgraph);
+gt.redrawgraph (gt, gt.views);
+####
+};
+
+
+####### remove subgraph ############
+
+dotty.protogt.actions.general["remove subgraph"] =
+  function(gt, vt, data) {
+        if (~data.obj)
+            gt.removesgraph (gt, data);
+  };
+
+
+###
+
+dotty.protogt.removesgraph = function (gt, data) {
+    local kv, t, attr, value, sgnum, sgnum2, sgrect, sgraph;
+
+####
+sgnum2=0;
+for(sgnum in gt.graph.graphs){
+	sgrect = gt.graph.graphs[sgnum].rect;
+	if (data.pos.x <= sgrect[1].x)
+	  if(data.pos.x >= sgrect[0].x)
+		if(data.pos.y <= sgrect[1].y)
+			if(data.pos.y >= sgrect[0].y)
+			{
+				if(~gt.graph.graphs[sgnum].graphs[sgnum2])
+				sgnum2 = sgnum;
+			}
+}
+
+remove (gt.graph.graphs[sgnum2].name, gt.graph.graphdict);
+gt.graph.graphdict[sgnum2]=sgnum2;
+gt.graph.graphs[sgnum2].rect = null;
+
+gt.redrawgraph (gt, gt.views);
+####
+};
+
+
+######## move subgraph ###########
+
+dotty.protogt.movesgraph = function (gt, sgraph, data) {
+    local sgnum, sgnum2, sgrect, sgid, dx, dy;
+
+gt.undrawsgraph (gt, gt.views, sgraph);
+
+    dx = data.pos.x-data.ppos.x;
+    dy = data.pos.y-data.ppos.y;
+sgraph.rect[0].x = dotty.item2moverect[0].x + dx;
+sgraph.rect[1].x = dotty.item2moverect[1].x + dx;
+sgraph.rect[0].y = dotty.item2moverect[0].y + dy;
+sgraph.rect[1].y = dotty.item2moverect[1].y + dy;
+sgraph.lp.x = dotty.item2movelp.x + dx;
+sgraph.lp.y = dotty.item2movelp.y + dy;
+
+gt.unpacksgraphattr (gt, sgraph);
+gt.drawsgraph (gt, gt.views, sgraph);
+gt.redrawgraph (gt, gt.views);
+
+#####
+sgid = sgraph["gid"];
+
+#del old sgraph from other sgraphs
+
+for(sgnum in gt.graph.graphs){
+	if (gt.graph.graphs[sgnum].graphs[sgid])
+		remove(sgid, gt.graph.graphs[sgnum].graphs);
+}
+
+#insert new sgraph into others
+
+for(sgnum in gt.graph.graphs){
+ if(sgnum ~= sgid){
+   sgrect = gt.graph.graphs[sgnum].rect;
+   if (data.pos.x <= sgrect[1].x)
+	if(data.pos.x >= sgrect[0].x)
+		if(data.pos.y <= sgrect[1].y)
+			if(data.pos.y >= sgrect[0].y)
+			{
+				gt.graph.graphs[sgnum].graphs[sgid] = gt.graph.graphs[sgid];
+			}
+ }
+}
+
+#####
+
+};
+#######set node rank ############
+
+dotty.protogt.actions.node["rank min"] = function (gt, vt, obj, data) {
+local attr, sgnum, str, objid;
+
+for(sgnum in gt.graph.graphs){
+	str[0] = "";
+	str = split(gt.graph.graphs[sgnum].name,"r");
+	if(str[0] ~= "cluste"){
+	      	for(objid in gt.graph.graphs[sgnum].nodes){
+			if(obj.nid == objid){
+				gt.graph.graphs[sgnum].graphattr.rank='min';
+				return;
+			}
+		}
+	}
+}
+
+attr['rank']='min';
+gt.insertsgraph(gt,1,attr,1,data);
+gt.movenode(gt,obj,data.pos);
+};
+
+dotty.protogt.actions.node["rank max"] = function (gt, vt, obj, data) {
+local attr, sgnum, str, objid;
+
+for(sgnum in gt.graph.graphs){
+	str[0] = "";
+	str = split(gt.graph.graphs[sgnum].name,"r");
+	if(str[0] ~= "cluste"){
+	      	for(objid in gt.graph.graphs[sgnum].nodes){
+			if(obj.nid == objid){
+				gt.graph.graphs[sgnum].graphattr.rank='max';
+				return;
+			}
+		}
+	}
+}
+
+attr['rank']='max';
+gt.insertsgraph(gt,1,attr,1,data);
+gt.movenode(gt,obj,data.pos);
+};
+
+####### pop subgraph ##########
+
+
+dotty.protogt.actions.node["expand node"] = function (gt, vt, obj, data) {
+	gt = dotty.protogt.creategraph (null);
+       gt.createview (gt, null);
+	if(obj.attr.pop)
+		gt.loadgraph (gt, concat("../../../tests/lucid/",obj.attr.pop), 'file', dotty.protogt.graph, 1);
+	else
+		gt.loadgraph (gt, concat("../../../tests/lucid/tran-",obj.attr.label,".ipl"), 'file', dotty.protogt.graph, 1);
+
+};
+####### end #######
+
+dotty.protogt.layoutmode = 'async';
+monitorfile = dotty.monitorfile;

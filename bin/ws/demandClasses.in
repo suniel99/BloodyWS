@@ -1,0 +1,11 @@
+gipsy.apps.broker.sim.demands.ClientDemand
+gipsy.apps.broker.sim.demands.SecurityDemand
+gipsy.apps.broker.sim.demands.RestaurantDemand
+gipsy.apps.broker.sim.demands.ShoppingDemand
+WorkRestaurantDemand
+WorkDemandFactorial
+WorkDemandPi
+WorkDemandScrSht
+WorkDemandHD
+LightUniqueDemand
+SizeAdjustableDemand

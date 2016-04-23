@@ -1,0 +1,32 @@
+#INDEXICALLUCID
+
+life = evolve(T, initial(T), conway(life, T))
+where
+	dimension T;
+
+	evolve(d, u, v) = u fby.d v;
+
+	initial(d) = 
+		if(Y == 0 && 0 <= X && X < 5) then 1 else 0
+		where
+			X = 0 fby.d X + 1;
+			Y = 0 fby.d Y + 1;
+		end;
+		
+	conway(d, v) = b2i(neighbours == 3 || (v == 1 && neighbours == 2))
+	where
+		neighbours = n(d) + ne(d) + e(d) + se(d) + s(d) + sw(d) + w(d) + nw(d);
+		where
+			n(d)  = v @.(d - 5);
+			ne(d) = v @.(d - 4);
+			e(d)  = v @.(d + 1);
+			se(d) = v @.(d + 6);
+			s(d)  = v @.(d + 5);
+			sw(d) = v @.(d + 4);
+			w(d)  = v @.(d - 1);
+			nw(d) = v @.(d - 6);
+		end;
+		
+		b2i(b) = if(b) then 1 else 0;
+	end;
+end;

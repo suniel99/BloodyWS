@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+  <!--JBuilder Library Definition File-->
+  <fullname>JINI</fullname>
+  <class>
+    <path>[lib/jini-core.jar]</path>
+    <path>[lib/jini-ext.jar]</path>
+    <path>[lib/netcdfAll.jar]</path>
+    <path>[lib/outrigger-dl.jar]</path>
+    <path>[lib/reggie-dl.jar]</path>
+    <path>[lib/start.jar]</path>
+    <path>[lib/sun-util.jar]</path>
+    <path>[lib/tools.jar]</path>
+  </class>
+  <lastmodsaved>1099782389376</lastmodsaved>
+</library>

@@ -1,0 +1,87 @@
+/*
+// works
+//raining @ [city:"Montreal", day:4]
+raining @ [city:"Montreal", month:"Sep", day:4]
+// works
+//raining @ ([city:"Montreal", day:4])
+// doesn't work
+//raining @ ([city:"Montreal", day:4], 1, 0)
+//raining @ es_raining.os_montreal.[day:1]
+//raining @ [es_raining.os_montreal.day:1]
+where
+	dimension city: unordered finite nonperiodic {"Montreal", "Ottawa", "Quebec"};
+	dimension day: ordered finite nonperiodic {1 to 31};
+	//dimension day: {1 to 31};
+	
+	evidential statement es_raining = {os_montreal_raining, os_ottawa_raining, os_quebec_raining};
+	
+	observation sequence os_montreal_raining =
+	{
+		//true, false, true, true, false, false
+		([city:"Montreal", month:"Sep", day:1, raining:true], 1, 0, 1.0, "September 1, 2013"),
+		[city:"Montreal", month:"Sep", day:2, raining:false],
+		[city:"Montreal", month:"Sep", day:3, raining:true],
+		[city:"Montreal", month:"Sep", day:4, raining:true],
+		[city:"Montreal", month:"Sep", day:5, raining:false],
+		[city:"Montreal", month:"Sep", day:6, raining:false]
+	};
+
+	observation sequence os_ottawa_raining =
+	{
+		([city:"Ottawa", month:"Sep", day:1], 1, 0, 1.0, "September 1, 2013"),
+		([city:"Ottawa", month:"Sep", day:2], 1, 0, 0.0, eod),
+		[city:"Ottawa", month:"Sep", day:3, raining:true],
+		[city:"Ottawa", month:"Sep", day:4, raining:true],
+		[city:"Ottawa", month:"Sep", day:5, raining:false],
+		[city:"Ottawa", month:"Sep", day:6, raining:false]
+	};
+
+	observation sequence os_quebec_raining =
+	{
+		([city:"Quebec", month:"Sep", day:1, raining:true], 1, 0, 1.0, "September 1, 2013"),
+		[city:"Quebec", month:"Sep", day:2, raining:false],
+		[city:"Quebec", month:"Sep", day:3, raining:true],
+		[city:"Quebec", month:"Sep", day:4, raining:true],
+		[city:"Quebec", month:"Sep", day:5, raining:false],
+		[city:"Quebec", month:"Sep", day:6, raining:false]
+	};
+	
+	//raining = #([#city,#month,#day] \intersection es_raining); 
+	//raining = ([#city,#month,#day] \intersection es_raining); 
+	raining = ([city:#city,month:#month,day:#day] \intersection es_raining); 
+	//raining = ([#city,#month,#day] \intersection es_raining).P.raining; 
+	//raining = ([#city,#month,#day] \intersection es_raining).#.raining;
+	// In case modeling raining as .w 1.0 for yes, and 0.0 for now; else chance of raining 
+	//raining = ([#city,#month,#day] \intersection es_raining).w;
+	
+	// Via \projection on P.[city:#city,month:#month,day:#day] will yield P.[raining:x], then # or .
+end
+*/
+
+/*
+{[a:5,b:3], [a:5,b:3]}
+where
+//observation o = ("foo", 1, 0);
+//evidential statement es = { { betty}, { sally} };
+//dimension a : ordered finite nonperiodic {1,3,5};
+//{[a:5,b:3], [a:5,b:3]};
+//[a:5,b:3];
+// XXX: cannot parse??
+//("foo", 1, 0);
+o;
+end
+*/
+
+/*
+[bel(es), pl(es)]
+oBetty
+where
+  evidential statement es = { betty, sally };
+
+  observation sequence betty = { oBetty };
+  observation sequence sally = { oSally };
+
+  observation oBetty = ("limb on my car", 1, 0, 0.99);
+  observation oSally = ("limb on my car", 1, 0, 0.99);
+end
+*/

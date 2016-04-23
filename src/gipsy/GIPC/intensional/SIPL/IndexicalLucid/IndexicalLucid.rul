@@ -1,0 +1,36 @@
+first.D R =>	R@.D 0
+next.D R  =>	R@.D (#.D+1);
+prev.D R  =>	R@.D (#.D-1);
+L fby.D R =>	if (#.D==0) 
+		then L 
+		else R@.D (#.D-1);
+L wvr.D R =>Û	L@.D T
+		where
+			T =	if(#.D= =0) 
+				then U 
+				else (U@.D (T+1))@.D (#.D-1);
+				where
+					U = if R 
+			 			then #.D 
+						else U@.D (#.D+1);
+					end;
+		end;
+L asa.D R =>	(L@.D T)@.D 0
+		where
+			T = if(#.D= =0)
+				then U 
+				else (U@.D(T+1))@.D (#.D-1);
+				where
+					U = if (R) 
+						then #.D 
+						else U@.D (#.D+1);
+					end;
+		end;
+L upon.D R =>	L@.D T
+		where
+			T = if(#.D= =0)
+				then 0 
+				else (if (R) 
+					then (T+1) 
+					else T)
+		end;

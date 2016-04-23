@@ -1,0 +1,9 @@
+  X+Y
+   where
+      X=42; 
+      Y=m+n
+        where
+          m=6;
+          n=7;
+        end; 
+   end

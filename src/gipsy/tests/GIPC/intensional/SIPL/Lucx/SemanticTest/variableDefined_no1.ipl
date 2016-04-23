@@ -1,0 +1,7 @@
+X
+  where
+     Y=43
+     where
+       X=12;
+     end;
+  end

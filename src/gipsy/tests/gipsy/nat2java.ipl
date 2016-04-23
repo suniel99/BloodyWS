@@ -1,0 +1,22 @@
+#JAVA
+
+int getN(int piDimension)
+{
+	if(piDimension <= 0)
+		return get42();
+	else
+		return getN(piDimension - 1) + 1;
+}
+
+int get42()
+{
+	return 42;
+}
+
+#JLUCID
+
+N @.d 2
+where
+	dimension d;
+	N = getN[d](#.d);
+end

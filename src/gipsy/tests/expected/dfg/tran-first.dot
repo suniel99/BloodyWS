@@ -1,0 +1,27 @@
+digraph G {
+rankdir = LR;
+edge [arrowsize=0.7];
+edge [arrowtail="none"];
+
+aa2 [shape=house,orientation=270,label=""];
+{rank="max";aa2;}
+
+
+subgraph cluster0{
+node [shape=box];
+label = "FUNCTION_first";
+color = hot_pink;
+fontcolor = hot_pink;
+
+
+op3 [label="AT"];
+op3 ->aa2;
+aa4 [label="R"];
+aa4 -> op3 [headlabel="1"];
+aa5 [label="D", shape=ellipse];
+aa5 -> op3 [headlabel="2"];
+aa6 [label="0"];
+aa6 -> op3 [headlabel="3"];
+{rank="min";aa6;aa5;aa4;}
+
+}}

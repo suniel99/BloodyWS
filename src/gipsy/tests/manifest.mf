@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Main-Class: gipsy.tests.Regression
+Class-Path: ../.. marf.jar ../../../lib/marf.jar lib/marf.jar netcdfAll.jar ../../../lib/netcdfAll.jar lib/netcdfAll.jar 
+Name: gipsy
+Specification-Title: General Intensional Programming System - Regression
+Specification-Version: 1.0.0
+Specification-Vendor: The GIPSY Research and Development Group
+Implementation-Title: gipsy
+Implementation-Version: 1.0.0-devel
+Implementation-Vendor: The GIPSY Research and Development Group
+Bundle-Version: 1.0.0-devel
+Bundle-Name: gipsy
+Bundle-Vendor: The GIPSY Research and Development Group

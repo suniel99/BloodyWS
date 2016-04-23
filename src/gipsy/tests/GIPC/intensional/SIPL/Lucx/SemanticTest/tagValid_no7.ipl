@@ -1,0 +1,5 @@
+(n @ [d : "green"])
+   where 
+     dimension d : unordered infinite periodic {<"blue", "red">};
+     n=42;
+   end

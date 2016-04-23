@@ -1,0 +1,5 @@
+N @.d 2
+where
+	dimension d;
+	N = if (#.d <= 0) then 42 else (N + 1) @.d (#.d - 1) fi;
+end

@@ -1,0 +1,5 @@
+((#d)-1)
+  where
+    dimension d;
+    n=42;
+  end

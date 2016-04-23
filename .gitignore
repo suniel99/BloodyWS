@@ -1,0 +1,37 @@
+CVS
+*.class
+*.swp
+*.swo
+*.log
+*.err
+*.out
+log/
+*.nfs*
+*LOCAL
+#
+# built jar files
+#
+src/COPYRIGHT
+src/gipsy/GEE/gee-1.0.0-devel-*.jar
+src/gipsy/GEE/gee.jar
+src/gipsy/GIPC/COPYRIGHT
+src/gipsy/GIPC/gipc-1.0.0-devel-*.jar
+src/gipsy/GIPC/gipc.jar
+src/gipsy/RIPE/COPYRIGHT
+src/gipsy/RIPE/ripe-1.0.0-devel-*.jar
+src/gipsy/RIPE/ripe.jar
+src/gipsy/gipsy-1.0.0-devel-*.jar
+src/gipsy/gipsy.jar
+src/gipsy/tests/Regression-1.0.0-devel-*.jar
+src/gipsy/tests/Regression.jar
+
+#
+# marfcat files
+#
+bin/multitier/cve.marf.Storage.TrainingSet.709-marf.apps.MARFCAT.Storage.AnyToWAVLoader.0.0.107.301.512.gzbin
+bin/multitier/cve.marf.Storage.TrainingSet.709-marf.apps.MARFCAT.Storage.AnyToWAVLoader8000.0.0.0.107.301.2.512.gzbin
+bin/multitier/java.util.ArrayList.ref
+bin/multitier/report-rawfftchebdebugdgt-nfshomejjos_mgitcomp490datasetsmetawireshark120_trainxml.xml
+bin/multitier/*wireshark-1.2.0*
+bin/multitier/*wireshark120*
+runtime/

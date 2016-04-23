@@ -1,0 +1,18 @@
+/*
+ * PREFIX SUM in Indexical Lucid-style JLucid
+ */
+
+#JLUCID
+
+S[8] @.d 8
+where
+	dimension d;
+
+	S[I] = 1 fby.d (2 * S[I] - 1);
+
+	I @.i 8
+	where
+		dimension i;
+		I = 1 fby.i (I - 1);
+	end;
+end

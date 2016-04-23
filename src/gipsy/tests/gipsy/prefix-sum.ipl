@@ -1,0 +1,25 @@
+/*
+ * PREFIX SUM in GIPL-style JLucid program.
+ * Numbers are from 1 to 8.
+ * S[I] will contain prefix sum for number 'i'
+ */
+
+#JLUCID
+
+// Array of prefix sums
+S[8] @.d 8
+where
+	dimension d;
+
+	S[I] = if(#.d = 0)
+				then 1
+				else (2 * S[I] - 1) @.d (#.d - 1)
+		   fi;
+
+	// Index the array varies within.
+	I @.i 8
+	where
+		dimension i;
+		I = if(#.i = 0) 1 else (I - 1) @.d (#.i - 1);
+	end;
+end

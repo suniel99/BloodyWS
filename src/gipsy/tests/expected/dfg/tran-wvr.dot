@@ -1,0 +1,108 @@
+digraph G {
+rankdir = LR;
+edge [arrowsize=0.7];
+edge [arrowtail="none"];
+
+aa2 [shape=house,orientation=270,label=""];
+{rank="max";aa2;}
+
+
+subgraph cluster0{
+node [shape=box];
+label = "FUNCTION_wvr";
+color = hot_pink;
+fontcolor = hot_pink;
+
+
+op3 [label="AT"];
+op3 ->aa2;
+aa4 [label="L"];
+aa4 -> op3 [headlabel="1"];
+aa5 [label="D", shape=ellipse];
+aa5 -> op3 [headlabel="2"];
+aa6 [label="T"];
+aa6 -> op3 [headlabel="3"];
+
+op7 [label="MOD"];
+op7 ->aa2;
+aa8 [label="T"];
+aa8 -> op7 [headlabel="1"];
+
+op9 [label="IF"];
+op9 ->op7 [headlabel="2"];
+
+op10 [label="EQ"];
+op10 ->op9 [headlabel="1"];
+
+op11 [label="HARSH"];
+op11 ->op10 [headlabel="1"];
+aa12 [label="D", shape=ellipse];
+aa12 -> op11 [headlabel="1"];
+aa13 [label="0"];
+aa13 -> op10 [headlabel="2"];
+aa14 [label="U"];
+aa14 -> op9 [headlabel="2"];
+
+op15 [label="AT"];
+op15 ->op9 [headlabel="3"];
+
+op16 [label="AT"];
+op16 ->op15 [headlabel="1"];
+aa17 [label="U"];
+aa17 -> op16 [headlabel="1"];
+aa18 [label="D", shape=ellipse];
+aa18 -> op16 [headlabel="2"];
+
+op19 [label="ADD"];
+op19 ->op16 [headlabel="3"];
+aa20 [label="T"];
+aa20 -> op19 [headlabel="1"];
+aa21 [label="1"];
+aa21 -> op19 [headlabel="2"];
+aa22 [label="D", shape=ellipse];
+aa22 -> op15 [headlabel="2"];
+
+op23 [label="MIN"];
+op23 ->op15 [headlabel="3"];
+
+op24 [label="HARSH"];
+op24 ->op23 [headlabel="1"];
+aa25 [label="D", shape=ellipse];
+aa25 -> op24 [headlabel="1"];
+aa26 [label="1"];
+aa26 -> op23 [headlabel="2"];
+
+op27 [label="MOD"];
+op27 ->aa2;
+aa28 [label="U"];
+aa28 -> op27 [headlabel="1"];
+
+op29 [label="IF"];
+op29 ->op27 [headlabel="2"];
+aa30 [label="R"];
+aa30 -> op29 [headlabel="1"];
+
+op31 [label="HARSH"];
+op31 ->op29 [headlabel="2"];
+aa32 [label="D", shape=ellipse];
+aa32 -> op31 [headlabel="1"];
+
+op33 [label="AT"];
+op33 ->op29 [headlabel="3"];
+aa34 [label="U"];
+aa34 -> op33 [headlabel="1"];
+aa35 [label="D", shape=ellipse];
+aa35 -> op33 [headlabel="2"];
+
+op36 [label="ADD"];
+op36 ->op33 [headlabel="3"];
+
+op37 [label="HARSH"];
+op37 ->op36 [headlabel="1"];
+aa38 [label="D", shape=ellipse];
+aa38 -> op37 [headlabel="1"];
+aa39 [label="1"];
+aa39 -> op36 [headlabel="2"];
+{rank="min";aa39;aa38;aa35;aa34;aa32;aa30;aa28;aa26;aa25;aa22;aa21;aa20;aa18;aa17;aa14;aa13;aa12;aa8;aa6;aa5;aa4;}
+
+}}

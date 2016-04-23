@@ -1,0 +1,10 @@
+A where
+    dimension d;
+    A= merge[d](2*A,3*A);    
+    merge[a](x,y)=xx+yy
+	where
+xx=x+a;
+yy=y-a;
+end;
+end
+

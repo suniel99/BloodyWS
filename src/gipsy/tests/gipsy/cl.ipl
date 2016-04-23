@@ -1,0 +1,61 @@
+#typedecl
+ClassXB;
+
+#funcdecl
+ClassXB f1();
+
+#JAVA
+class ClassXB
+{
+	public int x;
+	public double b;
+
+	public ClassXB()
+	{
+		x = 0; b = 1.2;
+	}
+
+	// The return type is int simply because the result
+	// is used further where and int argument is expected
+	// in the Lucid segment.
+	public int foo(int a, double c)
+	{
+		return x = (int)(x * a + b * c);
+	}
+
+	public ClassXB addx(int d)
+	{
+		x += d;
+		return this;
+	}
+}
+
+ClassXB f1()
+{
+	return new ClassXB();
+}
+
+#OBJECTIVELUCID
+
+/*
+ * The result of this program should be the object E
+ * to be evaluated at time dimension 2 with its 'x'
+ * member modified accordingly.
+ *
+ * Collapsed expression:
+ * E = f1() fby.time E.addx(E.foo(E.x * 2, E.x + E.b) + 3);
+ *
+ * Changes of E in time:
+ *
+ * time:  0                  1                  2
+ * E:     ClassXB:x:0:b:1.2  ClassXB:x:3:b:1.2  ClassXB:x:29:b:1.2
+ */
+
+E @.time 2
+where
+	dimension time;
+	E = f1[time]() fby.time A;
+	A = E.addx[time](B);
+	B = E.foo[time](C, E.x + E.b) + 3;
+	C = E.x * 2;
+end

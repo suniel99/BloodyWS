@@ -1,0 +1,28 @@
+class Prime
+{
+    private int prime = /@#INDEXICALLUCID
+                          first.x sieve
+                          where
+                              dimension x, y;
+                              sieve = ints fby.y (sieve wvr.x sieve % prime != 0);
+                              where
+                                  ints = 2 fby.x ints + 1;
+                              end
+                          end@/;
+
+    int num;
+
+    public void print()
+    {
+        for(num = 0; num < 100; num++)
+        {
+            /@ prime@[x:num] @/
+            System.out.println(prime);
+        }
+    }
+
+    public static void main(String[] argv)
+    {
+    	new Prime().print();
+    }
+}

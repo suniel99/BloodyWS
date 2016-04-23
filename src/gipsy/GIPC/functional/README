@@ -1,0 +1,26 @@
+README
+======
+
+$Header: /cvsroot/gipsy/gipsy/src/gipsy/GIPC/functional/README,v 1.1 2005/06/21 23:52:07 mokhov Exp $
+
+Functional Languages Supported in GIPSY
+---------------------------------------
+
+TODO
+
+Note, while there is a provision to have
+Functional Langauge compilers in this
+directory, the framwork and its interface
+have not been explioitly defined though
+they will be pretty close to the
+imperative language compilers framework.
+
+I'll work on this later when I have time,
+if you feel like picking it up, go straight
+ahead. Use 'imperative' and 'intesional'
+packages as examples, define IFunctionalCompiler,
+and get the ball rolling.
+
+- Serguei
+
+EOF

@@ -1,0 +1,5 @@
+(n @ [d:101])
+   where 
+     dimension d : ordered infinite nonperiodic {INF- to INF+};
+     n=42;
+   end

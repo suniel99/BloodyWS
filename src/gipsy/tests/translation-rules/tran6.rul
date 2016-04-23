@@ -1,0 +1,4 @@
+fby:  if ( # .D == 0 ) then L else ( R @ .D ( # .D - 1 ) ) fi
+   where
+    dimension D, D, D,;
+   end

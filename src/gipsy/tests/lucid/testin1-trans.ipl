@@ -1,0 +1,7 @@
+( x wvr . d y)
+where
+  dimension d;
+  dimension z;
+  y=prev . d z;
+  x=2;
+end  

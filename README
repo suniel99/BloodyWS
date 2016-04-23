@@ -1,0 +1,41 @@
+General Intensional Programming System --- GIPSY
+================================================
+
+Identification:
+
+   $Header: /cvsroot/gipsy/gipsy/README,v 1.10 2006/06/16 17:58:52 x_ton Exp $
+
+README
+======
+
+Major Directories:
+
+	/src - GIPSY Source Code
+	/doc - Documentation sources
+	/lib - Required libraries
+
+General:
+
+	COPYRIGHT  - Licensing terms
+	INSTALL    - Installation intructions
+	README     - This file
+	TODO       - List of TODO items
+
+Build System:
+
+	Makefile        - Top-level Makefile for UNIXen, GNU-style
+	
+	GIPSY.jpx       - JBuilder project and library files
+	GIPSY.jpx.local
+	MARF.library
+	NetCDF.library
+	JINI.library
+    
+	.project        - These two are project files for the Eclipse platform
+	.classpath
+
+Running Basics:
+
+	$ java gipsy/GIPC/Lucid gipsy/tests/lucid/t1.ipl d=2 -G
+
+EOF

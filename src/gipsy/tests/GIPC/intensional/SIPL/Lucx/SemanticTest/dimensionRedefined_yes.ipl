@@ -1,0 +1,9 @@
+((#d)-1)+n
+   where
+     dimension d;
+     n=((#d)-1)
+       where
+         dimension d;
+       end;
+   end
+     

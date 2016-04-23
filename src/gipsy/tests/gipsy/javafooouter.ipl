@@ -1,0 +1,14 @@
+#JAVA
+
+int foo(int i)
+{
+	return i + 1;
+}
+
+#JLUCID
+
+F @.d 3
+where
+	dimension d;
+	F = foo[d](#.d);
+end

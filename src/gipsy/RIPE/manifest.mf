@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Main-Class: gipsy.RIPE.RIPE
+Class-Path: . gipsy marf.jar ../../../lib/marf.jar lib/marf.jar netcdfAll.jar ../../../lib/netcdfAll.jar lib/netcdfAll.jar ../../../lib/jung-visualization-2.0.1.jar ../../../lib/jung-algorithms-2.0.1.jar ../../../lib/jung-graph-impl-2.0.1.jar ../../../lib/jgoodies/forms-1.3.0.jar
+Name: gipsy
+Specification-Title: General Intensional Programming System - RIPE
+Specification-Version: 1.0.0
+Specification-Vendor: The GIPSY Research and Development Group
+Implementation-Title: gipsy
+Implementation-Version: 1.0.0-devel
+Implementation-Vendor: The GIPSY Research and Development Group
+Bundle-Version: 1.0.0-devel
+Bundle-Name: gipsy
+Bundle-Vendor: The GIPSY Research and Development Group

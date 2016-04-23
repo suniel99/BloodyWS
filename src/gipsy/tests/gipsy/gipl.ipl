@@ -1,0 +1,17 @@
+/**
+ * GIPL-only GIPSY program.
+ */
+
+#GIPL
+
+A @.d 3
+where
+	dimension d;
+	A = if (#.d) <= 0 then 1 else (A + 1) @.d (#.d - 1) fi;
+end
+
+/*
+ * In theory, we could write more than one *IPL chunk, then
+ * those chunks would evaluate as separate possibly totally
+ * independent expressions in parallel.
+ */

@@ -1,0 +1,5 @@
+(n @ [d:101])
+   where 
+     dimension d : ordered finite nonperiodic lower upper {1 to 100 step 2};
+     n=42;
+   end

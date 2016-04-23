@@ -1,0 +1,6 @@
+n @ [d : 2] \intersect [d : 2, e :3 ]
+  where 
+     dimension d;
+     dimension e;
+     n= 42 fby n+1;
+  end

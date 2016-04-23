@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://test" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://test" xmlns:intf="http://test" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://test" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getHashTableValue">
+    <complexType>
+     <sequence>
+      <element name="podSignature" type="impl:WSDemandSignature"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="WSDemandSignature">
+    <sequence/>
+   </complexType>
+   <element name="getHashTableValueResponse">
+    <complexType>
+     <sequence>
+      <element name="getHashTableValueReturn" type="impl:WSDemand"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="WSDemand">
+    <sequence>
+     <element name="signature" nillable="true" type="impl:WSDemandSignature"/>
+    </sequence>
+   </complexType>
+   <element name="setHashTable">
+    <complexType>
+     <sequence>
+      <element name="poIdObj" type="impl:WSDemand"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="setHashTableResponse">
+    <complexType>
+     <sequence>
+      <element name="setHashTableReturn" type="impl:WSDemandSignature"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPendingDemand">
+    <complexType/>
+   </element>
+   <element name="getPendingDemandResponse">
+    <complexType>
+     <sequence>
+      <element name="getPendingDemandReturn" type="impl:WSDemand"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getPendingDemandResponse">
+
+      <wsdl:part element="impl:getPendingDemandResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getHashTableValueResponse">
+
+      <wsdl:part element="impl:getHashTableValueResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setHashTableResponse">
+
+      <wsdl:part element="impl:setHashTableResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="setHashTableRequest">
+
+      <wsdl:part element="impl:setHashTable" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPendingDemandRequest">
+
+      <wsdl:part element="impl:getPendingDemand" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getHashTableValueRequest">
+
+      <wsdl:part element="impl:getHashTableValue" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="WSDSTWrapper">
+
+      <wsdl:operation name="getHashTableValue">
+
+         <wsdl:input message="impl:getHashTableValueRequest" name="getHashTableValueRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getHashTableValueResponse" name="getHashTableValueResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setHashTable">
+
+         <wsdl:input message="impl:setHashTableRequest" name="setHashTableRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:setHashTableResponse" name="setHashTableResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPendingDemand">
+
+         <wsdl:input message="impl:getPendingDemandRequest" name="getPendingDemandRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPendingDemandResponse" name="getPendingDemandResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="WSDSTWrapperSoapBinding" type="impl:WSDSTWrapper">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getHashTableValue">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getHashTableValueRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getHashTableValueResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setHashTable">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setHashTableRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setHashTableResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPendingDemand">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPendingDemandRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPendingDemandResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="WSDSTWrapperService">
+
+      <wsdl:port binding="impl:WSDSTWrapperSoapBinding" name="WSDSTWrapper">
+
+         <wsdlsoap:address location="http://localhost:7070/test/services/WSDSTWrapper"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

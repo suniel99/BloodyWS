@@ -1,0 +1,29 @@
+/**
+ * @version $Id: GIPLtest.jooip,v 1.10 2008/11/14 18:50:05 aihua_wu Exp $
+ */
+public class GIPLtest
+{
+    private int N = /@#GIPL 
+    				if (#.d) <= 0 then 1 else (N+1) @.d (#.d) - 1 fi
+                    where
+                      dimension d;
+                    end @/;
+
+    public int computeLocalAverage(int f)
+    {
+       return  ( /@ N@.d f - 1 where dimension d; end @/
+        	   + /@ N@.d f + 1 where dimension d; end @/) / 2;
+    }
+
+    public void print()
+    {
+        System.out.println("N=" + N);
+    }
+
+    public static void main(String[] argv)
+    {
+        GIPLtest oTest = new GIPLtest();        
+        oTest.N = oTest.computeLocalAverage(2); 
+        oTest.print();
+    }
+}

@@ -1,0 +1,75 @@
+GIPSY TODO / Wishlist
+=====================
+
+$Id: TODO,v 1.6 2015/07/08 18:20:40 mokhov Exp $
+
+- SOURCE CODE
+
+  - Apply Coding Style Guide
+    - GEE
+    - GIPC
+    - RIPE
+
+  - Merge Auto_Syn's and Translator (from Lei Ren) interfaces
+
+  - Bump constants up
+
+  - Back-sync the JJT files
+
+  - Implement
+    - AbstractSyntaxTree entirely
+    - Dictionary
+
+  - RIPE/interfaces
+    - Move DFG loading/storing logic to DataFlowGraph.java
+
+  - Remove
+    * Auto_Syn.java
+    - SIPL/Translator.java (depends on merge of the API above)
+
+  - SIPL
+    - Move GIPC/Translator to GICP/SIPL/GenericTranslator
+    +- IndexicalLucid
+      * /parser
+      - Translator-specific Code
+    * Add JLucid
+
+- BUILD SYSTEM
+
+  - Add configure test what make to use (gmake vs. make)
+  - Add Makefile.global
+  - Add Sun ONE Studio
+  - Add NetBeans
+  * Add Eclipse
+  * Fix Lucid.jpx to deal with Translator vs. Auto_Syn
+  * Add root GIPSY.jpx file
+  * Propagate Makefiles to
+    * SequentialThreadGeneator
+    * X stuff
+
+- DOCS
+
+  - Add 'em :-)
+  - LaTeX
+    - Coding Style Guide
+    - GIPSY Architecture
+    - Tutorials on CVS and SSH
+
+- WWW
+
+  - Merge with the docs and regenerate from 'em
+  - Add Wiki
+  - Update Collaborators
+    - Add Emil
+    - Update
+      - Serguei
+      - Aihua
+      - Chun Lei Ren
+      - Paula
+  - Link
+    - CVS
+    - Wiki
+    - Tutorials
+    - Presentations
+
+EOF

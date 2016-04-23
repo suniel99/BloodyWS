@@ -1,0 +1,7 @@
+(n @ [d:2])
+   where 
+     n=42
+      where
+         dimension d; //although d is defined, but in the wrong scope
+      end;
+   end

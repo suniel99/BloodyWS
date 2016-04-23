@@ -1,0 +1,13 @@
+/* This is to test context calculus expression 
+   used as function parameter
+*/
+I 
+ where
+   dimension d;
+   dimension e;
+   I=getI [d, e]([d : 1, e : 2] \intersection [e : 2]);
+   getI [d , e](cxt) 
+     where
+       x = x @ cxt;
+     end;
+ end

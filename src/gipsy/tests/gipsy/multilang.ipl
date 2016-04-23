@@ -1,0 +1,46 @@
+#funcdecl
+
+Integer f();
+void gee();
+void z();
+
+#typedecl
+
+Integer;
+
+#JAVA
+
+Integer f()
+{
+    return new Integer("123");
+}
+
+#CPP
+
+#include <iostream>
+
+void gee()
+{
+    cout << "gee" << endl;
+}
+
+#PERL
+
+sub z()
+{
+    while(<STDIN>)
+    {
+        s/\n//;
+        print;
+    }
+}
+
+#OBJECTIVELUCID
+
+A @.d 5
+where
+	dimension d;
+	A = B fby.d (A - 1);
+	B = C fby.d (B + f().intValue());
+	C = z() && gee();
+end;

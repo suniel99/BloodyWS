@@ -1,0 +1,35 @@
+#!/bin/bash
+
+CLASSPATH="$CLASSPATH:.:src:lib/jini-core.jar:lib/jini-ext.jar:lib/sun-util.jar:/usr/java/latest/lib/tools.jar:lib/marf.jar:marf.jar:lib/netcdfAll.jar:netcdfAll.jar:lib/jung-visualization-2.0.1.jar:lib/jung-algorithms-2.0.1.jar:lib/jung-graph-impl-2.0.1.jar:lib/jgoodies/forms-1.3.0.jar:"
+GIPSYROOT=./bin
+
+echo "Trying .class ..." >ripe.err.log
+java -cp $CLASSPATH gipsy.RIPE.RIPE $@ 2>>ripe.err.log
+
+if [ $? != 0 ]; then
+
+	echo "Trying /usr/bin/gipsy/ripe.jar ..." >>ripe.err.log
+	java -cp $CLASSPATH -Djava.library.path=/usr/java/latest/jre/lib/i386 -Djava.security.policy=$GIPSYROOT/jini/start.policy -jar /usr/bin/gipsy/ripe.jar $@ 2>>ripe.err.log
+
+	if [ $? != 0 ]; then
+
+		echo "Trying ripe.jar ..." >>ripe.err.log
+		java -cp $CLASSPATH -Djava.library.path=/usr/java/latest/jre/lib/i386 -Djava.security.policy=$GIPSYROOT/jini/start.policy -jar ripe.jar $@ 2>>ripe.err.log
+
+		if [ $? != 0 ]; then
+
+			echo "Trying src/gipsy/RIPE/ripe.jar ..." >>ripe.err.log
+			java -cp $CLASSPATH -Djava.library.path=/usr/java/latest/jre/lib/i386 -Djava.security.policy=$GIPSYROOT/jini/start.policy -jar src/gipsy/RIPE/ripe.jar $@ 2>>ripe.err.log
+
+			if [ $? != 0 ]; then
+				echo "ripe.jar or RIPE.class not found"
+				exit $?
+			fi
+
+		fi
+
+	fi
+
+fi
+
+# EOF

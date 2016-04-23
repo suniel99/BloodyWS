@@ -1,0 +1,26 @@
+public class Hamming
+{
+    private int H = /@#INDEXICALLUCID 
+    				1 fby .d  if (xx<=yy) then xx else yy fi
+    				where
+    					dimension d;
+    					xx = 2*H  upon .d  (xx<=yy);
+    					yy = 3*H  upon .d  (yy<=xx);
+    				end @/;
+    				
+    int num;
+
+    public void print()
+    {
+        for(num = 0; num < 100; num++)
+        {
+        	/@ H@.d num @/
+	        System.out.println("Value of H = " + H);
+        }
+    }
+
+    public static void main(String[] argv)
+    {
+    	new Hamming().print();
+    }
+}

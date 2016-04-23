@@ -1,0 +1,8 @@
+/**
+ * Append elements of s2 to element of s1
+ * in all possible combinations.
+ */
+product(s1, s2, d) =
+  if iseod s2 then eod;
+  else combine(s1, first s2) fby.d product(s1, next s2);
+  fi

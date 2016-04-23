@@ -1,0 +1,7 @@
+H @.d 3
+where
+	dimension d;
+	H = 1 fby.d merge[d](merge[d](2 * H, 3 * H), 5 * H);
+	merge[d](x, y) =
+		embed("file://path/to/class/Merge.class", "merge", x, y);
+end

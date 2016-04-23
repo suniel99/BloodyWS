@@ -1,0 +1,8 @@
+(X+Y)
+  where
+    Y=15+m
+      where
+         m=11;
+         X=12;
+       end;
+   end

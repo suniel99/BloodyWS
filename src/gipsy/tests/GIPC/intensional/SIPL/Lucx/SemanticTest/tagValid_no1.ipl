@@ -1,0 +1,5 @@
+(n @ [d:4])
+   where 
+     dimension d : ordered finite periodic {<1,2,3> : 3};
+     n=42;
+   end

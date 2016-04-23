@@ -1,0 +1,70 @@
+[ THIS README IS OUT OF DATE; UPDATE TO NEW DIR STRUTURE!!! ]
+
+The package contains the followings java programs:
+
+GEE.java
+  - main GEE module; a starting point for the Engine
+
+Executor.java
+  - Interpreter of the AST produced by GIPC driving the execution
+
+CONFIG.java
+  - constants
+
+GEEException.java
+  - A GEE-specific exception should be thrown
+    by GEE modules.
+
+IVW/Warehouse/ValueHouse.java
+  - implementation of IValueHouse interface
+
+IDP/DemandList.java
+  - implementation of IDemandList interface
+
+IDP/DemandGenerator/rmi/IdentifierContext.java
+  - baseclass
+
+IDP/DemandGenerator/rmi/
+	IdentifierContextClient.java  // client
+	IdentifierContextServer.java  // server
+
+IVW/Warehouse/IValueHouse.java
+IDP/IDemandList.java
+  - interfaces
+
+IDP/DemandGenerator/rmi/policy  // give the access policy
+
+How to Compile:
+---------------
+
+IC0.java     // derived from IdentifierContext, for identifier A
+IC1.java
+....
+Ic4.java
+
+FIXME: javac *.java
+
+How to generate stubs and skeletons:
+------------------------------------
+
+FIXME:
+
+rmic ValueHouse
+rmic DemandList
+rmic IdentifierContextServer
+
+Start a registry on the server side
+
+start rmiregistry
+
+Start a server:		// need to redirect the codebase
+
+FIXME:
+
+java  -Djava.rmi.server.codebase=file:///u:/grad/blu/RemoteExe/ -Djava.security.policy=file:///u:/grad/blu/RemoteExe/policy ICServer
+
+Start a client:
+
+java -Djava.rmi.server.codebase="file:///u:/grad/blu/RemoteExe/ICS_Stub" -Djava.security.policy=file:///u:/grad/blu/RemoteExe/policy ICClient
+
+EOF

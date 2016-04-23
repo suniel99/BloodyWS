@@ -1,0 +1,5 @@
+# Common settings for all Makefiles
+# $Id: Makefile.global,v 1.4 2011/01/06 00:15:59 mokhov Exp $
+GIPSY_TOOLS=$(BASE_GIPSY_DIR)/tools
+MAKE=`$(GIPSY_TOOLS)/make-test.sh`
+COMMONJFLAGS=-source 1.7 -g

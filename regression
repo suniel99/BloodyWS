@@ -1,0 +1,16 @@
+#!/bin/bash
+
+java -cp src:lib/marf.jar:lib/netcdfAll.jar:lib/junit.jar gipsy.tests.Regression $@
+
+# rm -rf src/tests/current
+# mkdir -p src/tests/current
+# mv src/tests/gipl/{*.log *.nc *.gipsy} src/tests/current/gipl
+# ...
+# diff -rc src/tests/expected src/tests/current
+
+#if [ $? != 0 ]; then
+#	echo "There are differences between the current and expected outputs."
+#	echo "This may indicate an error in the current code or unupdated expected output."
+#fi
+
+# EOF

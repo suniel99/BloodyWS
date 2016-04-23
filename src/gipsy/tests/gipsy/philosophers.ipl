@@ -1,0 +1,114 @@
+/**
+ * Dining Philosophers Problem
+ * in JLucid
+ *
+ * @author Serguei Mokhov, mokhov@cs.concordia.ca
+ * @version $Revision: 1.11 $ $Date: 2005/10/11 08:34:10 $
+ */
+
+#funcdecl
+
+int getIninitalRandomState();
+boolean chew(int);
+boolean brainstormIdea(int);
+
+
+#JLUCID
+
+/*
+ * Assume 8 philosophers and two states.
+ * States: 2 - eating, 1 - thinking
+ * Forks are either available or not; hence, 2 states as well.
+ */
+PHILOSOPHERS[8] @.states 2
+where
+	dimension states;
+
+	// Initialize all forks
+	FORKS[8] @.availability 2
+	where
+		dimension availability;
+
+		FORKS[I] = getIninitalRandomState();
+
+		I @.d 8
+		where
+			dimension d;
+			I = 1 fby.d (I - 1);
+		end;
+	end;
+
+	/*
+	 * Run the actual algorithm.
+	 * NOTE: in this implementation the computation
+	 * never terminates (normally). It is an infinite loop.
+	 */
+	PHILOSOPHERS[I] =
+		if(#.states == 1) then
+			eat(I) @.states 2
+
+			eat(I) =
+				getForks(I) && chew(I);
+
+			getForks(I) = g(l, r)
+			where
+				l = FORK[I] @.availability 1;
+				r = FORK[I] @.availability 1;
+			end;
+		else
+			think(I) @.states 1
+
+			think(I) =
+				putForks(I) && brainstormIdea(I);
+
+			putForks(I) = p(l, r)
+			where
+				l = FORK[I] @.availability 2;
+				r = FORK[I] @.availability 2;
+			end;
+		fi;
+
+	I @.d 8
+	where
+		dimension d;
+		I = 1 fby.d (I - 1);
+	end;
+end
+
+#JAVA
+
+int getIninitalRandomState()
+{
+	// Either 1 or 2
+	return new Random().nextInt(2) + 1;
+}
+
+boolean chew(int i)
+{
+	try
+	{
+		System.out.println("Philo " + i + " is chewing smth tasty now.");
+		sleep(new Random().nextInt(i * 1200));
+		System.out.println("Philo " + i + " finished chewing.");
+		return true;
+	}
+	catch(InterruptedException e)
+	{
+		return false;
+	}
+}
+
+boolean brainstormIdea(int i)
+{
+	try
+	{
+		System.out.println("Philo " + i + " is heavily thinking now.");
+		sleep(new Random().nextInt(i * 1200));
+		System.out.println("Philo " + i + " finished thinking.");
+		return true;
+	}
+	catch(InterruptedException e)
+	{
+		return false;
+	}
+}

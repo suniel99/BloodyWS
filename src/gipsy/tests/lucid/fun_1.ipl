@@ -1,0 +1,10 @@
+A
+where
+    dimension d;
+    A=1 fby .d merge[](aa,bb);
+    merge[](x,y)=if (xx<=yy) then xx else yy fi
+    where
+        xx=x;
+        yy=y;
+    end;
+end;

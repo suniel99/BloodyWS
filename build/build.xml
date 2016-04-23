@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<project name="gipsy" basedir="." default="usage">
+    <property file="build.properties"/>
+	<property name = "project.root" value = "../"/>
+    <property name="src.dir" value="${project.root}/src"/>
+	<property name="lib.dir" value="${project.root}/lib"/>
+    <property name="build.dir" value="${project.root}/bin"/>
+    <property name="name" value="gipsy"/>
+
+	<!-- Setting the build path -->
+	
+    <path id="master-classpath">
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        <!-- The following jar files are excluded 
+        	 because they causes complier error
+        	 when varifing their signatures -->
+        	<exclude name="outrigger-dl.jar"/>
+        	<exclude name="reggie-dl.jar"/>
+        	<exclude name="start.jar"/>
+        	<exclude name="sun-util.jar"/>
+        	<exclude name="tools.jar"/>
+        </fileset>
+        <pathelement path="${build.dir}"/>
+    </path>
+	
+	<!-- End of setting the build path -->
+	
+	<!-- Defining Tasks -->
+	
+    <target name="usage">
+        <echo message=""/>
+        <echo message="${name} build file"/>
+        <echo message="-----------------------------------"/>
+        <echo message=""/>
+        <echo message="Available targets are:"/>
+        <echo message=""/>
+        <echo message="build     --> Build the application"/>
+        <echo message=""/>
+    </target>
+
+    <target name="build" description="Compile main source tree java files">
+        <mkdir dir="${build.dir}"/>
+        <copy todir="${build.dir}" preservelastmodified="true">
+            <fileset dir="${src.dir}">
+            	<include name="**/*"/>     
+            	<exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <javac destdir="${build.dir}" target="1.6" debug="true"
+               deprecation="false" optimize="false" failonerror="true">
+            <src path="${src.dir}"/>
+            <classpath refid="master-classpath"/>
+        </javac>
+    </target>
+	
+	<!-- End of Tasks -->
+</project>

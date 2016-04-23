@@ -1,0 +1,14 @@
+
+/**
+ * Append given e to each element of a given
+ * stream s under the context of path.
+ *
+ * @return the resulting combined stream
+ */
+combine(s, e, path)
+where
+  dimension path;
+  if iseod s then eod;
+  else (first s fby.path e) fby.path combine(next s, e, path);
+  fi
+end;

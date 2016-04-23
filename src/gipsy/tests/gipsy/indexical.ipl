@@ -1,0 +1,24 @@
+/**
+ * Indexical Lucid-only GIPSY program.
+ */
+
+#INDEXICALLUCID
+
+A @.d 3
+where
+    dimension d;
+    A = 1 fby.d merge[d](aa, bb);
+    merge[d](x, y) = if (xx <= yy) then xx else yy fi
+    where
+        xx = x;
+        yy = y;
+    end;
+end
+
+/*
+ * In theory, we could write more than one *IPL chunk, then
+ * those chunks would evaluate as separate possibly totally
+ * independent expressions in parallel.
+ */
+
+// EOF

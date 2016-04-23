@@ -1,0 +1,5 @@
+(n @ ([a:1] \differentiate {[a:2]}))
+     where 
+        dimension a;
+        n=1;
+     end

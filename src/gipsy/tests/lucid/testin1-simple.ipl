@@ -1,0 +1,5 @@
+(N@.d 2) 
+where
+dimension d;
+N=N+1;
+end

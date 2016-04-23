@@ -1,0 +1,19 @@
+#JAVA
+
+int xx = 0, yy = 0;
+
+int merge(int x, int y)
+{
+	// very simplistic java code here
+	xx += (xx <= yy) ? x : 0;
+	yy += (yy <= xx) ? y : 0;
+	return (xx <= yy) ? xx : yy;
+}
+
+#JLUCID
+
+H @.d 3
+where
+	dimension d;
+	H = 1 fby.d merge[d](merge[d](2 * H, 3 * H), 5 * H);
+end

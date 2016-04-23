@@ -1,0 +1,5 @@
+(n @ [d:2])
+   where 
+     d=12; //Although d is defined, it is not a dimension variable.
+     n=42;
+   end

@@ -1,0 +1,85 @@
+/**
+ * Serguei Mokhov, mokhov@cs.concordia.ca
+ * Created: January 26, 2001
+ * Updated: June 6, 2002
+ */
+
+/* Standard Tags */
+
+a:link    {color: #0000DC}
+a:visited {color: #0000DC}
+a:hover   {color: #FFA500}
+
+h1
+{
+	color: #61002B;
+	font-family: "Verdana", Arial, sans-serif;
+}	
+
+h2
+{
+	color: #61002B;
+	font-family: "Verdana", Arial, sans-serif;
+}	
+
+h3
+{
+	color: #666699;
+	font-family: "Verdana", Arial, sans-serif;
+	font-size: 27px;
+}
+
+hr
+{
+	color: #000099
+}
+
+h4
+{
+	color: #666699;
+	font-family: "Verdana", Arial, sans-serif;
+}
+
+p
+{
+	color: #110011;
+	font-family: "Verdana", Arial, sans-serif;
+}
+
+li
+{
+	color: #660033;
+	font-family: "Verdana", Arial, sans-serif;
+}
+
+tr
+{
+    color: #110011;
+    font-family: "Verdana", Arial, sans-serif;
+}
+
+/* User Classes */
+
+.mark /* Marks, grades for the assignments, projects, and stuff */
+{
+	color: #AA0011;
+	font-family: "Verdana", Arial, sans-serif;
+	font-weight: bold;
+}
+
+.menuTitle
+{
+	color: gold;
+	font-family: "Verdana", Arial, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.menuItem
+{
+	color: #FFFF99;
+	font-family: "Verdana", Arial, sans-serif;
+	font-size: 15px;
+}
+
+/* EOF */

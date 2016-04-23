@@ -1,0 +1,47 @@
+public class InPhase
+{
+  InPhase  C1 = new InPhase();
+  OutPhase C2 = new OutPhase();
+  
+  double T = /@ 0 fby.time (T + 0.2) where dimension time; end @/;
+  double Y = /@ 0 fby.time (Y + (C2 @.time #.time).V * 0.2)
+                where dimension time; end @/;
+  double A = /@ 0 fby.time (-k / m) * (C1 @.time #.time).Y)
+                where dimension time; end @/;
+  double V = /@ if ((#.time == 0) || (#.time == 1) then 2.8
+                else (C2@.time #.time).V*2-(C1@.time #.time).V) fi
+                where dimension time; end @/;
+
+  public void output(double interval, double distance, double speed, double accel)
+  {
+    System.out.println("Feynman Algorithm");
+    System.out.println("Time = " + interval);
+    System.out.println("Position = " + distance);
+    System.out.println("Velocity = " + speed);
+    System.out.println("Acceleration = " + accel);
+  }
+
+  public static void main(String[] argv)
+  {
+    InPhase Motion = new InPhase();
+    double T_value = /@ Motion.T @.time 3
+                        where dimension time; end @/;
+    double Y_value = /@ Motion.Y @.time 3
+                        where dimension time; end @/;
+    double A_value = /@ Motion.A @.time 3
+                        where dimension time; end @/;
+    double V_value = /@ Motion.V @.time 3
+                        where dimension time; end @/;
+    output(T, Y, A,V);
+  }
+}
+
+public class OutPhase
+{
+  InPhase C1 = new InPhase();
+  double T = /@ if (#.time==0) then 0 else (0.1 fby.time (T+0.2)) fi
+                where dimension time; end @/;
+  double V = /@ if ((#.time == 0) || (#.time == 1)) then 2.8
+                else V + (C1@.time #.time).A * 0.2 fi
+                where dimension time; end @/;
+}

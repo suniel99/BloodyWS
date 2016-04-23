@@ -1,0 +1,11 @@
+/* This is to test Simple Context expression in where clause
+   complex expression in Context expression
+   and compatibility with if clause
+ */
+n
+ where
+   dimension d;
+   n = if #d <=0 then 22
+   else (n+1) @ [d : (#d-1)]
+   fi;
+ end

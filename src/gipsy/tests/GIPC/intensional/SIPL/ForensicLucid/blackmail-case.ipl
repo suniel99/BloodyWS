@@ -1,0 +1,149 @@
+os_mra @ es_blackmail
+where
+  // Core context of evaluation
+  //evidential statement es_mra = { os_final, os_unrelated };
+  evidential statement es_blackmail = { os_final, os_unrelated };
+
+  // List of all possible dimension tags
+  //observation Q = lengths box left_part box right_part;
+  //observation Q = combine(combine(lengths, left_part), right_part);
+  // Cluster events
+  //observation lengths = unordered finite nonperiodic {0, 1, 2};
+  //observation lengths = (unordered finite nonperiodic {0, 1, 2}, 1, 0);
+  ///observation lengths = (P, 1, 0);
+  dimension L : unordered finite nonperiodic {0, 1, 2};
+
+  dimension W : unordered finite nonperiodic
+  {
+  	"(u)", "(t1)", "(o1)",
+  	"(u,t2)", "(u,o2)",
+  	"(t1,t2)", "(t1,o2)",
+  	"(o1,t2)", "(o1,o2)"
+  };
+
+  dimension Wd : unordered finite nonperiodic
+  {
+  	"d(u,t2)", "d(u,o2)", "d(o1)", "d(t1,t2)",
+  	"d(t1,o2)", "d(o1,t2)", "d(o1,o2)"
+  };
+
+  I = W \union Wd;
+
+  // Mr. A's story
+  observation sequence os_mra = { $, o_unrelated_clean, $, o_blackmail, $ };
+  
+  // Crime scene description
+  observation sequence os_final = { $, o_final };
+  //observation sequence os_unrelated = { $, o_unrelated, $, (Ct,0,0), $ };
+  //observation sequence os_unrelated = { $, o_unrelated, $, \0(0), $ };
+  observation sequence os_unrelated = { $, o_unrelated, $, \0(I), $ };
+  
+  //observation o_final = (1, "u", "t2");
+  //observation o_final = [len:1, letter2:"u", threats:"t2"];
+  //observation o_final = [len:1, w:"(u,t2)"];
+  // 1 is the length
+  observation o_final = ("(u,t2)" => "threats in slack of unrelated letter", 1);
+  
+  //observation o_unrelated_clean = (1, "u", "o1");
+  //observation o_unrelated_clean = [len:1, letter2:"u", other:"o1"];
+  observation o_unrelated_clean = ("(u,o1)", 1);
+
+  //os_mra = invtrans(Q, es_mra, o_final);
+  backtraces = invtrans[I](es_blackmail \union os_mra);
+
+/*
+n @ [d : 2]
+  where
+    dimension d;
+    n = 42 fby #d + 1;
+  end;
+
+n @ {[d : 2], [e : 4]}
+  where
+    dimension d;
+    n = 42 fby #d + 1;
+  end;
+  
+ n
+ where
+   dimension d;
+   n = if #d <=0 then 22
+   else (n+1) @ [d : (#d-1)]
+   fi;
+ end;
+
+I 
+ where
+   dimension d;
+   dimension e;
+   I=getI [d, e]([d : 1, e : 2]);
+   getI [d , e](cxt) 
+     where
+       x = x @ cxt;
+     end;
+ end;
+ */
+ 
+  // Corresponds to the state machine
+  //trans = ...
+  // I: all valid transitions; c are computation dimension \in I; s is a state dimension
+  trans[I](c, s)
+  where
+    //("(u,o2)", 1, 0, 1.0, "123");
+    if(c == "(u)" and s == ("(o1,o2)", 0)) then 1 else 2 fi;
+    //if(c == "(u)" && s.#.# == ("(o1,o2)", 0))
+    //then ("(u,o2)", 1) fby trans[next I](next s.#) fi;
+  end;
+/*
+    if(c == "(u)" && s.#.# == ("(o1,o2)", 0))
+    then ("(u,o2)", 1) fby trans[next I](next s.#);
+
+    else if(c == "(u,t2)" && s.#.# == ("(u,o2)", 1))
+    then ("(u,t2)", 2) fby trans[next I](next s.#);
+
+    else if(c == "d(u,t2)" && s.#.# == ("(u,o2)", 1))
+    then ("(u,t2)", 1) fby eod;
+
+    else if(c == "(u)" && s.#.# == ("(u,t2)", 2))
+    then ("(u,t2)", 1) fby eod;
+  end;
+  */
+  
+  
+  /*
+  // There should be an ordered tagset, subset of I, to navigate over a path
+  // combined with observations, e.g.
+  // dimension path1 : ordered finite nonperiodic = {"(u)", "d(u,t2)"};
+  // dimension path2 : ordered finite nonperiodic = {"(u)", "(u,t2)", "(u)"};
+  // which does not mention the states, just ordered transitions. These would
+  // come from specs from system designers, disk or printer manufactures, etc. 
+  //
+  // transition function then pairs observations with transitions together
+  // as if putting constraints on possible evaluations. Intensional operators
+  // use both to navigate/query (or stop)
+  
+  // Event reconstruction
+  invtrans[I](es)
+  where
+    //backtraces = [ A, B ];
+    backtraces = [ A:A, B:B ];
+    //A = o_final pby "(u)" pby (2, "(u,t2)") pby "(u,t2)" pby (1, "(u,o2)") pby (0, "(o1,o2)");
+    //A = o_final pby #I "(u)" pby #es ("(u,t2)", 2, 0) pby #I "(u,t2)" pby #es ("(u,o2)", 1, 0) pby #I ("(o1,o2)", 0, 0);
+
+    A = o_final pby [es.#, I:"(u)"]
+    	("(u,t2)", 2) pby [es.#, I:"(u,t2)"]
+    	("(u,o2)", 1) pby [es.#, I:"(u)"]
+    	("(o1,o2)", 0);
+    
+    //A = o_final pby [es:#:#, I:"(u)"] ("(u,t2)", 2) pby [es:#os, I:"(u,t2)"] ("(u,o2)", 1) pby [es:#os, I:"(u)"] ("(o1,o2)", 0);
+    
+    //pby [es:#:# <=> pby.es <=> es.#.# means current observation
+    
+    //B = o_final pby "d(u,t2)" pby (1, "(u,o2)" pby "(u)" pby (0, "(o1,o2)");
+    B = o_final pby [es.#, I:"d(u,t2)"] ("(u,o2)", 1) pby [es.#, I:"(u)"] ("(o1,o2)", 0);
+    
+  	invtrans[next I](next es.#]);
+  end;
+  */
+
+end

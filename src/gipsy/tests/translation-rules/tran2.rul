@@ -1,0 +1,1 @@
+fby: if #.D==0 then -L+R else R@.D(#.D-1);

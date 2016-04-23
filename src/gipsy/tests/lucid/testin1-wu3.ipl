@@ -1,0 +1,11 @@
+X+Y 
+where
+ X=Z+1
+ where
+  Z=3;
+ end;
+ Y=Z+5.0
+  where
+   Z=3.3;
+  end;
+end

@@ -1,0 +1,11 @@
+x
+where  
+   dimension d, m;
+
+   x = if (#.d)==0 then 2 else (y+1.5)@.d (#.d)-1 fi
+
+   where          
+      y=(#.m)-1;
+   end;
+    
+end

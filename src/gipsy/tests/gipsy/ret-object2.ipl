@@ -1,0 +1,36 @@
+#JAVA
+
+class Foo
+{
+	private int bar;
+
+	public Foo()
+	{
+		bar = (int)(Math.random() * Integer.MAX_VALUE);
+	}
+
+	public int getBar()
+	{
+		return bar;
+	}
+
+	public void computeMod(int piParam)
+	{
+		bar = bar % piParam;
+	}
+}
+
+int getComputedBar(int piParam)
+{
+	Foo oFoo = new Foo();
+	oFoo.computeMod(piParam);
+	System.out.println("bar = " + bar);
+	return oFoo.getBar();
+}
+
+#JLUCID
+
+Bar
+where
+	Bar = getComputedBar(5);
+end;

@@ -1,0 +1,9 @@
+foo(i) = embed("file://my/classes/Foo.class", "foo", i);
+
+#JLUCID
+
+F @.d 3
+where
+	dimension d;
+	F = foo[d](#.d);
+end

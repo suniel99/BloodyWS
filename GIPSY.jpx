@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--JBuilder XML Project-->
+<project>
+  <property category="editor.general" name="line_ending.style" value="3"/>
+  <property category="generalFormatting" name="blockIndent" value="4"/>
+  <property category="generalFormatting" name="lineEndingStyle" value="3"/>
+  <property category="generalFormatting" name="tabSize" value="4"/>
+  <property category="generalFormatting" name="useTabChar" value="1"/>
+  <property category="idl" name="ProcessIDL" value="false"/>
+  <property category="java" name="compiler" value="hostjavac"/>
+  <property category="javaFormatting" name="alignMultilineParenthesis" value="0"/>
+  <property category="javaFormatting" name="blankLinesAfterField" value="1"/>
+  <property category="javaFormatting" name="classBraceNextLine" value="1"/>
+  <property category="javaFormatting" name="extendsOnNewLine" value="0"/>
+  <property category="javaFormatting" name="implementsOnNewLine" value="0"/>
+  <property category="javaFormatting" name="methodBraceNextLine" value="1"/>
+  <property category="javaFormatting" name="otherBraceNextLine" value="1"/>
+  <property category="javaFormatting" name="packageThreshold" value="0"/>
+  <property category="javaFormatting" name="spaceAfterTypecast" value="0"/>
+  <property category="javaFormatting" name="spaceBeforeLparen" value="0"/>
+  <property category="javaFormatting" name="spaceBetweenKeywordLparen" value="0"/>
+  <property category="javaFormatting" name="wrapAtColumn" value="445"/>
+  <property category="javadoc" name="custom.tags.1" value="todo;a;To Do:"/>
+  <property category="jbuilder.debug" name="ShowBreakpointInNoTracingClass" value="0"/>
+  <property category="jbuilder.debug" name="SmartStepSkipStaticInitializers" value="0"/>
+  <property category="jbuilder.debug" name="SmartStepSkipSynthetics" value="0"/>
+  <property category="optimize.0" name="OptimizableType" value="com.borland.jbuilder.optimize.IntroOptimizeitProfiler"/>
+  <property category="runtime.0" name="BuildTargetOnRun" value="com.borland.jbuilder.build.ProjectBuilder$ProjectBuildAction;make"/>
+  <property category="runtime.0" name="ConfigurationName" value="GIPSY Server"/>
+  <property category="runtime.0" name="RunnableType" value="com.borland.jbuilder.runtime.ApplicationRunner"/>
+  <property category="runtime.0" name="application.class" value="gipsy.GIPSY"/>
+  <property category="serverservices" name="disabled.services" value="connector;jdatastore;sqlj"/>
+  <property category="serverservices" name="is.single.server" value="0"/>
+  <property category="serverservices" name="single.server.name" value=""/>
+  <property category="sys" name="AuthorLabel" value="@author"/>
+  <property category="sys" name="BackupPath" value="src/gipsy/bak"/>
+  <property category="sys" name="BeansInstantiate" value="false"/>
+  <property category="sys" name="BraceStyle" value="1"/>
+  <property category="sys" name="CheckStable" value="1"/>
+  <property category="sys" name="Company" value="Concordia University"/>
+  <property category="sys" name="CompanyLabel" value="Company:"/>
+  <property category="sys" name="Copyright" value="Copyright (c) 2002-2004 The GIPSY Development Group"/>
+  <property category="sys" name="CopyrightLabel" value="Copyright:"/>
+  <property category="sys" name="DefaultPath" value="src/gipsy"/>
+  <property category="sys" name="Description" value="Intensional programming research platform."/>
+  <property category="sys" name="DescriptionLabel" value="Description:"/>
+  <property category="sys" name="DocPath" value="doc"/>
+  <property category="sys" name="EventMatch" value="false"/>
+  <property category="sys" name="EventStyle" value="1"/>
+  <property category="sys" name="ExcludeClassEnabled" value="0"/>
+  <property category="sys" name="IncludeTestPath" value="1"/>
+  <property category="sys" name="InstanceVisibility" value="0"/>
+  <property category="sys" name="JDK" value="java version 1.4.2_01-b06"/>
+  <property category="sys" name="JvmVersion" value="1.4"/>
+  <property category="sys" name="LastTag" value="0"/>
+  <property category="sys" name="Libraries" value="NetCDF;MARF;JINI"/>
+  <property category="sys" name="MakeStable" value="0"/>
+  <property category="sys" name="OutPath" value="src/gipsy/classes"/>
+  <property category="sys" name="SourcePath" value="src/gipsy;src/gipsy;src/gipsy"/>
+  <property category="sys" name="TestPath" value="src/gipsy"/>
+  <property category="sys" name="Title" value="General Intensional Programming System (GIPSY)"/>
+  <property category="sys" name="TitleLabel" value="Title:"/>
+  <property category="sys" name="Version" value="1.0"/>
+  <property category="sys" name="VersionLabel" value="@version"/>
+  <property category="sys" name="WorkingDirectory" value="src/gipsy"/>
+  <property category="sys" name="max.package.levels" value="10"/>
+  <file path="src/gipsy/GIPSY.java"/>
+</project>

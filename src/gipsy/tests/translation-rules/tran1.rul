@@ -1,0 +1,17 @@
+bb: #.D
+first: R @ .D 0
+fby: if (#.D==0) then L else R@.D(#.D-1);
+wvr: L @ .D T
+     where
+        T=if (#.D==0) then U else (U@.D(T+1))@ .D (#.D-1);
+        where
+           U=if R then #.D else U @ .D (#.D+1);
+        end;
+     end;
+asa: (L @ .D T) @ .D 0
+     where
+        T=if (#.D==0) then U else (U@.D(T+1))@ .D (#.D-1);
+        where
+           U=if R then #.D else U @ .D (#.D+1);
+        end;
+     end;

@@ -1,0 +1,101 @@
+digraph G {
+	graph [rankdir=LR];
+	node [label="\N"];
+	edge [arrowsize="0.7", arrowtail=none];
+	graph [bb="0,0,564,276"];
+	{
+		graph [rank=max];
+		graph [bb=""];
+		aa6 [label="", shape=house, orientation=270, pos="529,126", width="0.75", height="0.50"];
+	}
+	subgraph cluster0 {
+		graph [label=START];
+		graph [color=hot_pink];
+		graph [fontcolor=hot_pink];
+		graph [lp="42,266"];
+		graph [bb="8,8,472,256"];
+		node [shape=box];
+		subgraph cluster1 {
+			graph [label=X];
+			graph [lp="49,258"];
+			graph [bb="36,136,380,248"];
+			{
+				graph [rank=max];
+				graph [lp=""];
+				graph [bb=""];
+				aa2 [label="", shape=point, pos="370,150", width="0.06", height="0.06"];
+			}
+			{
+				graph [rank=min];
+				graph [lp=""];
+				graph [bb=""];
+				aa9 [label=1, pos="211,162", width="0.75", height="0.50"];
+			}
+			subgraph cluster2 {
+				graph [label=Z];
+				graph [lp="76,250"];
+				graph [bb="64,188,221,240"];
+				{
+					graph [rank=max];
+					graph [lp=""];
+					graph [bb=""];
+					aa3 [label="", shape=point, pos="211,203", width="0.06", height="0.06"];
+				}
+				{
+					graph [rank=min];
+					graph [lp=""];
+					graph [bb=""];
+					aa10 [label=3, pos="119,214", width="0.75", height="0.50"];
+				}
+				aa10 -> aa3 [pos="e,209,203 146,211 166,208 194,205 206,203"];
+			}
+			op8 [label=ADD, pos="303,162", width="0.75", height="0.50"];
+			op8 -> aa2 [pos="e,368,150 330,157 342,155 356,152 364,151"];
+			aa3 -> op8 [headlabel=1, pos="e,279,180 213,203 218,203 229,203 238,201 251,197 263,190 274,184", head_lp="275,189"];
+			aa9 -> op8 [headlabel=2, pos="e,276,162 238,162 248,162 259,162 269,162", head_lp="267,166"];
+		}
+		subgraph cluster3 {
+			graph [label=Y];
+			graph [lp="49,138"];
+			graph [bb="36,16,380,128"];
+			{
+				graph [rank=max];
+				graph [lp=""];
+				graph [bb=""];
+				aa4 [label="", shape=point, pos="370,112", width="0.06", height="0.06"];
+			}
+			{
+				graph [rank=min];
+				graph [lp=""];
+				graph [bb=""];
+				aa12 [label="5.0", pos="211,42", width="0.75", height="0.50"];
+			}
+			subgraph cluster4 {
+				graph [label=Z];
+				graph [lp="76,130"];
+				graph [bb="64,68,221,120"];
+				{
+					graph [rank=max];
+					graph [lp=""];
+					graph [bb=""];
+					aa5 [label="", shape=point, pos="211,94", width="0.06", height="0.06"];
+				}
+				{
+					graph [rank=min];
+					graph [lp=""];
+					graph [bb=""];
+					aa13 [label="3.3", pos="119,94", width="0.75", height="0.50"];
+				}
+				aa13 -> aa5 [pos="e,209,94 146,94 166,94 194,94 205,94"];
+			}
+			op11 [label=ADD, pos="303,94", width="0.75", height="0.50"];
+			op11 -> aa4 [pos="e,368,111 330,101 342,104 356,108 364,110"];
+			aa5 -> op11 [headlabel=1, pos="e,276,94 213,94 220,94 247,94 269,94", head_lp="267,98"];
+			aa12 -> op11 [headlabel=2, pos="e,276,79 238,57 248,63 260,69 270,76", head_lp="266,79"];
+		}
+		op7 [label=ADD, pos="437,126", width="0.75", height="0.50"];
+		aa2 -> op7 [headlabel=1, pos="e,410,136 372,149 377,147 390,143 404,138", head_lp="403,143"];
+		aa4 -> op7 [headlabel=2, pos="e,410,120 372,112 377,114 390,116 403,119", head_lp="400,123"];
+	}
+	op7 -> aa6 [pos="e,507,126 464,126 476,126 489,126 500,126"];
+}

@@ -1,0 +1,32 @@
+n @ [d : 2] \isSubContext [d : 2, e :3 ]
+//n @ [d : 2] \difference [d : 2, e :3 ]
+//n @ [d : 2] \intersection [d : 2, e : 3 ]
+//n @ [d : 2] \union [d : 2, e :3 ]
+//n @ [d : 2] \projection[d : 2, e :3 ]
+//n @ [d : 2] \hiding [d : 2, e :3 ]
+//n @ [d : 2] \extract [d : 2, e :3 ]
+//n @ [d : 2] \override [d : 2, e :3 ]
+//n @ [d : 2] \substitution [d : 2, e :3 ]
+//n @ [d : 2] \choose [d : 2, e :3 ]
+//n @ [d : 2] \undirectedRange [d : 2, e :3 ]
+//n @ [d : 2] \directedRange [d : 2, e :3 ]*/
+
+//Context Set
+//n @ {[d : 2]} \isSubContext {[d : 2], [e :3 ]}
+//n @ {[d : 2]} \isSupContext {[d : 2], [e :3 ]}
+//n @ {[d : 2]} \difference {[d : 2], [e :3 ]}
+//n @ {[d : 2]} \intersection {[d : 2], [e :3 ]}
+//n @ {[d : 2]} \union {[d : 2], [e :3 ]}
+//n @ {[d : 2]} \projection{[d : 2], [e :3 ]}
+//n @ {[d : 2]} \hiding {[d : 2], [e :3 ]}
+//n @ {[d : 2]} \extract {[d : 2], [e :3 ]}
+//n @ {[d : 2]} \override {[d : 2], [e :3 ]}
+//n @ {[d : 2]} \substitution {[d : 2], [e :3 ]}
+//n @ {[d : 2]} \choose {[d : 2], [e :3 ]}
+//n @ {[d : 2]}\undirectedRange {[d : 2], [e :3 ]}
+//n @ {[d : 2]} \directedRange {[d : 2], [e :3 ]}*/
+  where 
+     dimension d;
+     dimension e;
+     n= 42 fby n+1;
+  end

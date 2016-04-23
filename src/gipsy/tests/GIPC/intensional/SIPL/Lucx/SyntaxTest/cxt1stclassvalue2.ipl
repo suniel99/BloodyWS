@@ -1,0 +1,7 @@
+/* This is to test Context Set in the first expression 
+and back-compatibility with {\lucid} operators*/
+n @ {[d : 2], [e : 4]}
+  where
+    dimension d;
+    n = 42 fby #d + 1;
+  end

@@ -1,0 +1,32 @@
+#typedecl
+Nat42;
+
+#JAVA
+class Nat42
+{
+	private int n;
+
+	public Nat42()
+	{
+		n = 42;
+	}
+
+	public Nat42 inc()
+	{
+		n++;
+		return this;
+	}
+
+	public void print()
+	{
+		System.out.println("n = " + n);
+	}
+}
+
+#OBJECTIVELUCID
+
+(N @.d 2).print[d]()
+where
+	dimension d;
+	N = Nat42[d]() fby.d N.inc[d]();
+end

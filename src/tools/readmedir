@@ -1,0 +1,45 @@
+#!/bin/bash
+
+function usage()
+{
+	cat <<-USAGE
+	Usage:
+
+	    readmedir <FORMAT> <DIRECTORY>
+
+	Where <FORMAT> is one of the following:
+
+	    --txt    plain text output
+	    --html   HTML-formatted output
+	    --latex  LaTeX-formatted output
+	    --wiki   MediaWiki-formatted output
+	    --xml    XML-formatted output
+
+	<DIRECTORY> is a name of the root directory for readmedir
+	to start traversing from.
+	USAGE
+}
+
+for strDirEntry in .* *;
+do
+	echo "Structure preamble:"
+	echo "-------------------"
+	echo ""
+	ls -1 | grep -v REAFDME.dir
+
+	if [ -e README.dir ]; then
+		echo "Content description:"
+		cat README.dir
+	fi
+
+	if [ -e readme ]; then
+		echo "README"
+		cat  README
+	fi
+
+	if [ -d dir ]; then
+		desced dir
+	fi
+done
+
+# EOF

@@ -1,0 +1,118 @@
+alice_claim @ es
+where
+  // Consistent evidential statement
+  evidential statement es = { printer, manuf };
+
+  observation sequence printer = F;
+  observation sequence manuf = {Oempty, $};
+  observation sequence alice = {Oalice, F};
+
+  observation F = ("B_deleted", 1, 0);
+  observation Oalice = (P_alice, 0, INF+);
+  observation Oempty = ("empty", 1, 0);
+
+  // No "add_A" event per claim from Alice
+  // Could also say P_alice = {not "add_A"};
+  // P_alice = unordered {"add_B", "take"};
+  dimension P_alice : unordered finite nonperiodic {"add_B", "take"};
+
+  dimension S : unordered finite nonperiodic {"empty", "A_deleted", "B_deleted"};
+  
+  alice_claim = invpsiacme[S](es \union alice);
+/*
+  acmepsi[S](c, s)
+  where
+    d1 = first s;
+    d2 = second s;
+
+    // Add a print job from Alice
+    if c == "add_A"
+    then
+      if d1 == "A" || d2 == "A" then s
+      else
+        if (d1 \in S) then "A" fby d2
+        else
+          if (d2 \in S) then d1 fby "A"
+          else s fi;
+        fi;
+      fi;
+
+    // Add a print job from Bob
+    else if c == "add_B" then
+      if (d1 == "B") || (d2 == "B") then s
+      else
+        if (d1 \in S) then "B" fby d2
+        else
+          if (d2 \in S) then d1 fby "B"
+          else s fi;
+  
+    // Printer takes the job per manufacturer specification
+    else if c == "take"
+      if d1 == "A" then "A_deleted" fby d2
+      else
+        if d1 == "B" then "B" fby d2
+        else
+          if d2 == "A" then d1 fby "A_deleted";
+          else
+            if d2 == "B" then d1 fby "B_deleted";
+            else s fi
+  
+    // Done
+    else s fby eod fi;
+  end; // psi
+
+  invpsiacme[S](s)
+  where
+    backtraces = [A, B, C, D, E, F, G, H, I, J, K, L, M ];
+    //backtraces = [A:A, B:B, C:C, D:D, E:E, F:F, G:G, H:H, I:I, J:J, K:K, L:L, M:M ];
+  
+    d1 = first s;
+    d2 = second s;
+  
+    A = if d1 == "A_deleted"
+        then d2 pby "A" pby "take" else bod fi;
+    B = if d1 == "B_deleted"
+        then d2 pby "B" pby "take" else bod fi;
+    C = if (d2 == "A_deleted") && (d1 != "A") && (d2 != "B")
+        then d1 pby "A" pby "take" else bod fi;
+    D = if (d2 == "B_deleted") && (d1 != "A") && (d2 != "B")
+        then d1 pby "B" pby "take" else bod fi;
+    E = if (d1 \in S) && (d2 \in S)
+        then s pby "take" else bod fi;
+    F = if (d1 == "A") && (d2 != "A")
+        then
+          [ d2 pby "empty" pby "add_A",
+            d2 pby "A_deleted" pby "add_A",
+            d2 pby "B_deleted" pby "add_A" ]
+        else bod fi;
+    G = if (d1 == "B") && (d2 != "B")
+        then
+          [ d2 pby "empty" pby "add_B",
+            d2 pby "A_deleted" pby "add_B",
+            d2 pby "B_deleted" pby "add_B" ]
+        else bod fi;
+    H = if (d1 == "B") && (d2 == "A")
+        then
+          [ d1 pby "empty" pby "add_A",
+            d1 pby "A_deleted" pby "add_A",
+            d1 pby "B_deleted" pby "add_A" ]
+        else bod fi;
+    I = if (d1 == "A") && (d2 == "B")
+        then
+          [ d1 pby "empty" pby "add_B",
+            d1 pby "A_deleted" pby "add_B",
+            d1 pby "B_deleted" pby "add_B" ]
+        else bod fi;
+    J = if (d1 == "A") || (d2 == "A")
+        then s pby "add_A" else bod fi;
+    K = if (d1 == "A") && (d2 == "A")
+      then s pby.d "add_B" else bod fi;
+    L = if (d1 == "B") && (d2 == "A")
+      then s pby "add_A" else bod fi;
+    M = if (d1 == "B") || (d2 == "B")
+      then s pby "add_B" else bod fi;
+  end; // inv
+*/
+  
+// Main
+end

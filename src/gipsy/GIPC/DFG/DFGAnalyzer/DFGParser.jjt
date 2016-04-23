@@ -1,0 +1,275 @@
+/*
+ * OPTIONS
+ */
+
+options
+{
+	STATIC = false;
+}
+
+PARSER_BEGIN(DFGParser)
+package gipsy.GIPC.DFG.DFGAnalyzer;
+
+import gipsy.GIPC.util.ParseException;
+import gipsy.GIPC.util.SimpleCharStream;
+import gipsy.GIPC.util.Node;
+import gipsy.GIPC.util.Token;
+import gipsy.GIPC.util.TokenMgrError;
+
+class DFGParser
+{
+	public void ParserStart(DFGParser parser, ParserFacet facet)
+	{
+	//    System.out.println("Reading from standard input...");
+	
+		try
+		{
+			SimpleNode n=parser.Start();   
+			//    n.dump("");
+			facet.treepass(n);	
+		}
+		catch (Exception e)
+		{
+			System.err.println("Oops.");
+			System.err.println(e.getMessage());
+			e.printStackTrace(System.err);
+		}
+	}
+}
+PARSER_END(DFGParser)
+
+
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+| <"//" (~["\n","\r"])* ("\n"|"\r"|"\r\n")>
+| <"/*" (~["*"])* "*" (~["/"] (~["*"])* "*")* "/">
+}
+
+/*
+TOKEN : 
+{
+  < INTEGER_LITERAL:
+        <DECIMAL_LITERAL> (["l","L"])?
+      | <HEX_LITERAL> (["l","L"])?
+      | <OCTAL_LITERAL> (["l","L"])?
+  >
+|
+  < #DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])* >
+|
+  < #HEX_LITERAL: "0" ["x","X"] (["0"-"9","a"-"f","A"-"F"])+ >
+|
+  < #OCTAL_LITERAL: "0" (["0"-"7"])* >
+}
+*/
+
+TOKEN : /* OPERATORS */
+{
+  < ASSIGN: "=" >  /*   ??????   */
+| < GT: ">" >
+| < LT: "<" >
+| < EQ: "==" >
+| < LE: "<=" >
+| < GE: ">=" >
+| < NE: "!=" >
+| < OR: "or" >
+| < AND: "and" >
+| < NOT: "not" >
+| < PLUS: "+" >
+| < MINUS: "-" >
+| < STAR: "*" >
+| < SLASH: "/" >
+| < REM: "%" >
+
+| < ASA: "asa" >
+| < FBY: "fby" >
+| < UPON: "upon" >
+| < WVR: "wvr" >  /* binop */
+
+| < FIRST: "first" >
+| < NEXT: "next" >
+| < PREV: "prev" >
+| < ISEOD: "iseod" >  /* unop */
+
+| < AT: "@" >
+| < WHEN: "#" >
+}
+
+TOKEN : 
+{
+  < DIGRAPH: "digraph" >
+| < GRAPH: "graph" >
+| < NODE: "node" >
+| < EDGE: "edge" >
+| < SUBGRAPH: "subgraph" >
+| < LINK: "->" >
+}
+
+/*
+TOKEN :
+{
+  < IDENTIFIER: <LETTER> (<LETTER>|<DIGIT>)* >
+|
+  < #LETTER: ["_","a"-"z","A"-"Z"] >
+|
+  < #DIGIT: ["0"-"9"] >
+}
+*/
+
+TOKEN : /* IDENTIFIERS */
+{
+  < IDENTIFIER: (<LETTER>|<DIGIT>)+ >
+|
+  < #LETTER: ["," , "-" , "." , "_" , "a"-"z" , "A"-"Z"] >
+|
+  < #DIGIT: ["0"-"9"] >
+}
+
+SimpleNode Start() : {}
+{
+  graph()
+  { return jjtThis; }
+}
+
+void graph() #void : {}
+{ 
+ ( "digraph" id() "{" stmtlist() "}") #DIGRAPH
+}
+
+
+void stmt() #void : {}
+{
+attrstmt() | nodeid() ST1() | subgraph() | "{" ST2() "}"
+}
+
+void ST1() #void : {}
+{
+edgestmt() | nodestmt()
+}
+
+void ST2() #void : {}
+{
+ attrstmt() 			{
+				 Node midNode10=jjtree.popNode(); // blace
+				 Node midNode20=jjtree.popNode(); // item
+				 midNode10.jjtSetParent(midNode20);				 
+				 midNode20.jjtAddChild(midNode10, midNode20.jjtGetNumChildren());				 
+				 jjtree.pushNode(midNode20);
+				}
+
+[ST2()] | (nodeid()) {
+				 Node midNode1=jjtree.popNode(); // node
+				 Node midNode2=jjtree.popNode(); // blace
+				 midNode1.jjtSetParent(midNode2);				 
+				 midNode2.jjtAddChild(midNode1, midNode2.jjtGetNumChildren());				 
+				 jjtree.pushNode(midNode2);
+				}
+[ST2()]
+}
+
+void attrstmt() #void : {}
+{
+ ("graph" #GRAPH | "node" #NODE | "edge" #EDGE ) attrlist()
+}
+
+void attrlist() #void : {}
+{
+ "[" [alist()] "]" [attrlist()]
+}
+
+void alist() #void : {}
+{ 
+( id() "=" #ASSIGN id() )
+			       { Node midNode1=jjtree.popNode(); // right
+     				 Node midNode2=jjtree.popNode(); // edgeop
+				 Node midNode3=jjtree.popNode(); // left
+				 midNode1.jjtSetParent(midNode2);
+				 midNode3.jjtSetParent(midNode2);
+				 midNode2.jjtAddChild(midNode3, 0);
+				 midNode2.jjtAddChild(midNode1, 1);
+				 jjtree.pushNode(midNode2);
+			       
+				 Node midNode10=jjtree.popNode(); // assign
+				 Node midNode20=jjtree.popNode(); // title
+				 midNode10.jjtSetParent(midNode20);				 
+				 midNode20.jjtAddChild(midNode10, midNode20.jjtGetNumChildren());				 
+				 jjtree.pushNode(midNode20);
+			       }
+[alist()]
+}
+
+void nodestmt() #void : {}
+{ 
+[attrlist()]
+}
+
+
+void edgestmt() #void : {}
+{
+ edgeRHS() [attrlist()]
+}
+
+void subgraph() #void : {}
+{
+(
+ "subgraph" id() "{" stmtlist() "}"
+) #SUB
+}
+
+void stmtlist() #void : {}
+{ 
+stmt() [";"] [stmtlist() ]
+}
+
+void edgeop() #void : {}
+{
+ "->" #DIR
+}
+
+	
+void edgeRHS() #void : {}
+{
+( edgeop() nodeid() )
+			       { Node midNode1=jjtree.popNode(); // right
+     				 Node midNode2=jjtree.popNode(); // edgeop
+				 Node midNode3=jjtree.popNode(); // left
+				 midNode1.jjtSetParent(midNode2);
+				 midNode3.jjtSetParent(midNode2);
+				 midNode2.jjtAddChild(midNode3, 0);
+				 midNode2.jjtAddChild(midNode1, 1);
+				 jjtree.pushNode(midNode2);
+			       }
+}
+
+void nodeid() #void : {}
+{
+ id()
+}
+
+void id() #void : {}
+{
+  id2() | "\"" ST4()
+}
+
+void ST4() #void :{}
+{
+ ST3() "\"" |  ("\"") #ID  
+}
+
+void ST3() #void : {}
+{
+id2() [ST3(){Node midNode1=jjtree.popNode();}]
+}
+
+void id2() #ID : 
+{
+  Token t;
+}
+{
+  t= <IDENTIFIER>
+  { jjtThis.setImage(t.image); }
+}
+

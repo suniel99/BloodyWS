@@ -1,0 +1,5 @@
+#!/bin/bash
+
+java -cp src:lib/marf.jar:lib/netcdfAll.jar gipsy.GIPSY $@
+
+# EOF

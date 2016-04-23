@@ -1,0 +1,3 @@
+public class Hamming
+{
+    private int H = IPL_CODE_1

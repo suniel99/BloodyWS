@@ -1,0 +1,7 @@
+/* This is to test Simple Context in the first expression 
+and back-compatibility with Lucid operators*/
+n @ [d : 2]
+  where
+    dimension d;
+    n = 42 fby #d + 1;
+  end

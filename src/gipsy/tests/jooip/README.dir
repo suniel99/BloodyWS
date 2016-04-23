@@ -1,0 +1,5 @@
+Last modification of this file:
+  $Id: README.dir,v 1.1 2007/11/14 19:17:41 mokhov Exp $
+
+This directory contains the JOOIP test cases (syntactically/semantically
+correct and incorrect programs written in JOOIP).
